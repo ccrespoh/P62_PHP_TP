@@ -1,0 +1,32 @@
+A faire pour ven_29_mai :
+(1) Créer une fichier README.txt à la racine de votre projet. Y indiquer :
+- Une présentation en quelques lignes de votre projet 
+-- ex : Site permettant de présenter et vendre les produits de la compagnie de modèles réduits Aérox.
+
+- Les fonctionalités implantées :
+-- ex: 
+--- Pages de présentation de la compagnie
+--- Formulaire de contact (prise de rendez-vous)
+--- Vente de produits (gestion de panier, affichage et impression de bon de commande, check-out commande, paiement sécurisé .....)
+--- Back-office: Mise à jour du catalogue des produits.
+--- Back-Office: Suivi des commandes
+
+- Les principaux choix-techniques
+-- Multipage avec modèle de page géré par des blocs PHP
+-- Connexion / déconnexion utilisateur
+-- Pages publiques / privées
+
+
+(2) Un panier de Madeleines (http://fr.wikipedia.org/wiki/Madeleine_%28cuisine%29) en session (voir exercice)
+- Objectif : Gérer un panier d'achat de Madeleines sur un site marchand 
+- Créer une page index.php
+- Placer 3 liens contenant chacun une queryString 
+-- Ajouter une madeleine (?action=add)
+-- Retirer une madeleine (?action=remove)
+-- Vider le panier (?action=remove_all)
+- En bas de la page, afficher le nombre de madeleines contenu dans le panier
+- Mettez en place le méchanisme, à l'aide des sessions PHP, pour mettre à jour le nombre de madeleines dans le panier en rapport avec les différents clics de l'utilisateur sur les liens.
+
+(DEFI = option) Étendre le panier d'achat à d'autres articles : des Gâteau de Saint-Genix (http://fr.wikipedia.org/wiki/G%C3%A2teau_de_Saint-Genix) et des paquets de Marchmallow http://en.wikipedia.org/wiki/Marshmallow)
+
+

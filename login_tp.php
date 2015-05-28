@@ -10,7 +10,6 @@ $logoff_clique = array_key_exists('logoff_btn', $_POST) && ($_POST['logoff_btn']
 
 function afficher_login()
 {
-    echo '<h2>Formulaire Login</h2>';
     echo '<form action = "#" method = "post" name="login_form">';
     echo '<label for="name" > User name: </label >';
     echo '<input type = "text" id = "name" name = "name" >';
@@ -22,7 +21,6 @@ function afficher_login()
 
 function afficher_logoff()
 {
-    echo '<h2>Maintenant vous etes login !</h2>';
     echo '<form action = "#" method = "post" name="logoff_form">';
     echo '<input type = "submit" value = "Log off" name="logoff_btn">';
     echo '</form >';
@@ -34,14 +32,11 @@ function afficher_logoff()
 <head>
     <meta charset="utf-8"/>
     <title>Untitled</title>
-    <!--<link rel="stylesheet" href="style/main.css"/>-->
+
 </head>
 <body>
-<div id="main_wrapper">
+<div id="identification">
     <?php
-
-    // 注意： 本人发现 设置或清除cookie后，需要刷新页面才能成功更新cookie的状态 ？？？？？？
-
     if ($logoff_clique) {
         setcookie('status', null);
         afficher_login();

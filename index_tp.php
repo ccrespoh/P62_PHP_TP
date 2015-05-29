@@ -32,9 +32,6 @@
     <?php
     require_once 'catalog.php';
     ?>
-
-
-
     <footer>
         <p>footer footer footer footer footer footer footer footer</p>
     </footer>

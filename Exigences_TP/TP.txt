@@ -1,21 +1,43 @@
 A faire pour ven_29_mai :
-(1) Créer une fichier README.txt à la racine de votre projet. Y indiquer :
+(1) Créer une fichier README.txt ou README.html à la racine de votre projet. Y indiquer :
 - Une présentation en quelques lignes de votre projet 
--- ex : Site permettant de présenter et vendre les produits de la compagnie de modèles réduits Aérox.
+-- exemple : Site permettant de présenter et vendre les produits de la compagnie de modèles réduits Aérox.
 
 - Les fonctionalités implantées :
--- ex: 
+-- exemple: 
 --- Pages de présentation de la compagnie
 --- Formulaire de contact (prise de rendez-vous)
 --- Vente de produits (gestion de panier, affichage et impression de bon de commande, check-out commande, paiement sécurisé .....)
 --- Back-office: Mise à jour du catalogue des produits.
---- Back-Office: Suivi des commandes
+--- Back-office: Suivi des commandes
+--- Autre
 
-- Les principaux choix-techniques
--- Multipage avec modèle de page géré par des blocs PHP
--- Connexion / déconnexion utilisateur
--- Pages publiques / privées
+[Conformité avec l'énoncé de TP]
 
+[[Dans cette section, vous listez les principales "techniques" ou fonctionalités que vous réalisez. Il s'agit à la fois de techniques PHP vues en cours (ex: Sessions) et parfois de fonctionnalités en lien avec ces techniques (ex: Panier)]]
+[[Reprendre à votre compte les éléments ci-dessous et en ajouter si vos technologies/fonctions ne sont pas présents. Les technologies/fonctions précédées d'une "*" sont requises ou à négocier avec le professeur.]]
+
+- *Multipage avec modèle de page géré par des "blocs" PHP
+- *Au moins deux Formulaires avec validation serveur (Préciser la statégie ou technologie pour la validation (expression rationnelle, librairie Filter, codage interne, ...))
+-- login/logout
+-- contact
+-- inscription
+-- panier
+-- préférences utilisateur 
+-- autre formulaire 
+- *Affichage de catalogue et de produits
+-- *Vue catalogue : 
+--- Filtrage par catégorie, date ...
+--- Pagination (ex: produits affichés 10 par 10)
+-- *Vue produit avec photos
+- *Sessions PHP utilisées pour ...
+- *Cookies PHP utilisés pour ...
+- Connexion / déconnexion utilisateur
+-- Gestion de pages publiques / privées
+- Sauvegarde de préférences utilisateur/visiteur
+- Gestion simple Base de données (MySQL), niveau C.R.U.D.
+- Ajax pour les pages suivantes : ...
+- Autres
 
 (2) Un panier de Madeleines (http://fr.wikipedia.org/wiki/Madeleine_%28cuisine%29) en session (voir exercice)
 - Objectif : Gérer un panier d'achat de Madeleines sur un site marchand 

@@ -82,3 +82,7 @@ footer {
     top: 50px;
     /*border: 1px solid black;*/
 }
+
+.article img{
+    width: 100px;
+}

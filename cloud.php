@@ -1,14 +1,8 @@
 <?php
-echo "<ul>";
-echo "<li>DOCKER</li>";
-echo "<li>HADOOP</li>";
-echo "<li>KVM</li>";
-echo "<li>LINUX</li>";
-echo "<li>OPENSTACK</li>";
-echo "<li>PHP</li>";
-echo "<li>POSTGRESQL</li>";
-echo "<li>SPARK</li>";
-echo "<li>STORM</li>";
-echo "<li>TOMCAT</li>";
-echo "</ul>";
-?>
+require_once 'function.php';
+require_once 'data.php';
+//var_dump(demander_data('cloud', $data));
+
+$tb_cloud = demander_data('cloud', $data);
+
+afficher_article($tb_cloud);

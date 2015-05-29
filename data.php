@@ -337,11 +337,3 @@ $data=array (
         ),
     );
 
-$cloud=array();
-// nouveau array commence par 0
-foreach($data as $val){
-    if($val['cata']=='cloud') {
-        $cloud[] = $val;
-    }
-}
-var_dump($cloud);

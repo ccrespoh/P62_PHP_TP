@@ -9,32 +9,10 @@
 <div id="wrapper">
     <?php
     require_once 'header.php';
+    require_once 'login_tp.php';
     require_once 'catalog.php';
     require_once 'footer.php';
     ?>
-
-    <!--
-    <nav>
-        <ul>
-            <a href="">
-                <li>Accueil</li>
-            </a>
-            <a href="">
-                <li>Mes cours</li>
-            </a>
-            <a href="">
-                <li>S'inscrire</li>
-            </a>
-            <a href="">
-                <li>Contact</li>
-            </a>
-        </ul>
-
-    </nav>
-
--->
-
-
 </div>
 </body>
 </html>

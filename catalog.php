@@ -1,6 +1,19 @@
-<div id="catalog">
-    <a href="?page=cloud"><img src="img/cloud_computing.jpg" alt="cloud"></a>
-    <a href="?page=cloud"><img src="img/front_end.jpg" alt="front"></a>
-    <a href="?page=cloud"><img src="img/ios.jpg" alt="front"></a>
-    <a href="?page=cloud"><img src="img/java.jpg" alt="front"></a>
-</div>
+<?php
+$menu=array_key_exists('page',$_GET)?$_GET['page']: null;
+switch($menu){
+    case 'cloud':
+        require_once 'cloud.php';
+        break;
+    case 'front_end':
+        require_once 'front_end.php';
+        break;
+    case 'ios':
+        require_once 'ios.php';
+        break;
+    case 'java':
+        require_once 'java.php';
+        break;
+    default:
+        require_once 'menu.php';
+}
+?>

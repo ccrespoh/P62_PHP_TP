@@ -9,8 +9,17 @@ header {
 }
 
 h1 {
-    border-bottom: 3px solid darkblue;
+    border-bottom: 3px solid #1b1b1b;
+
 }
+h1>a{
+    text-decoration: none;
+    color:#1b1b1b;
+}
+h1>a:hover{
+    color:white;
+}
+
 
 nav {
     float: left;
@@ -40,11 +49,11 @@ nav a {
 }
 nav li:hover{
     background-color: #e9e9e9;
-    box-shadow: 3px 3px 10px #888888;
+    box-shadow: 3px 3px 10px #1b1b1b;
     color: red;
 }
 
-#catalog {
+#menu {
     text-align: center;
     width: 800px;
     margin: auto;
@@ -52,7 +61,7 @@ nav li:hover{
     /*border: 1px solid black;*/
 }
 
-#catalog img {
+#menu img {
     width: 200px;
     display: inline-block;
     margin: 30px 80px;
@@ -62,7 +71,7 @@ nav li:hover{
 
 }
 
-#catalog img:hover {
+#menu img:hover {
     transform: scale(1.2, 1.2);
 }
 

@@ -7,9 +7,13 @@
 </head>
 <body>
 <div id="wrapper">
-    <header>
-        <h1>Cours d'informatique en ligne</h1>
-    </header>
+    <?php
+    require_once 'header.php';
+    require_once 'catalog.php';
+    require_once 'footer.php';
+    ?>
+
+    <!--
     <nav>
         <ul>
             <a href="">
@@ -28,13 +32,9 @@
 
     </nav>
 
+-->
 
-    <?php
-    require_once 'catalog.php';
-    ?>
-    <footer>
-        <p>footer footer footer footer footer footer footer footer</p>
-    </footer>
+
 </div>
 </body>
 </html>

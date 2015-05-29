@@ -1,6 +1,6 @@
 <?php
 echo "<footer>
-        <p>footer footer</p>
+        <h3><a href='inscription.php'>Contactez nous</a></h3>
     </footer>";
 ?>
 

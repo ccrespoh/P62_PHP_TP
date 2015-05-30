@@ -23,6 +23,7 @@ function demander_data($cata, $tb_complet)
 function afficher_article($cata, $tb_cata)
 {
     echo '<div class="article">';
+    echo $cata=='cloud'? '<h2>Cours de Cloud Computing</h2>':"<h2>Cours de $cata</h2>";
     foreach ($tb_cata as $val) {
         echo '<div>';
         echo "<img src=img/$cata/{$val['name']}" . ".jpg alt='{$val['name']}'> ";

@@ -39,10 +39,10 @@
     <label for="course">Course:</label>
     <select name="course">
     <?php
-        ?>
+
         $tb_cloud = demander_data('cloud', $data);
-		echo "<option>afficher_article($tb_cloud);</option>
-        <?php
+		echo "<option>afficher_article($tb_cloud);</option>"
+        ?>
     </select>
     <div><input type="submit" value="envoyer"/></div>
 </form>

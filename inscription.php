@@ -2,7 +2,7 @@
     require_once 'header.php';
     require_once 'function.php';
 	require_once 'data.php';
-    require_once 'footer.php';
+    
     ?>
 <!DOCTYPE html>
 <html>
@@ -48,5 +48,8 @@
 </form>
 
 </div>
+<?php
+require_once 'footer.php';
+?>
 </body>
 </html>

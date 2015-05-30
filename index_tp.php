@@ -1,14 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['count'])) {
-  $_SESSION['count'] = 0;
-  var_dump($_SESSION);
-} else {
-  $_SESSION['count']++;
-  var_dump($_SESSION);
-}
-?> 
-
 <!DOCTYPE html>
 <html>
 <head lang="en">

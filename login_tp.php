@@ -1,8 +1,5 @@
-<?php
-echo "<nav><a href='index_tp.php' Onclick='afficher_login();'><li>Sign Up</li></a><a href='inscription.php'><li>S'inscrire</li></a> </nav>";
-?>
-<?php
 
+<?php
 define('NAME', 'admin');
 define('PASSWORD', '123');
 

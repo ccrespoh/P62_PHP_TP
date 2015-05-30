@@ -9,6 +9,10 @@ if (!array_key_exists('info', $_SESSION)) {
 
 $menu = array_key_exists('page', $_GET) ? $_GET['page'] : null;
 switch ($menu) {
+	case 'login':
+		require_once('login_tp.php');
+		require_once 'menu.php';
+		break;
     case 'cloud':
         require_once 'cloud.php';
         break;

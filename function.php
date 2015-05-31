@@ -59,7 +59,7 @@ function inscrire_panier()
 
     echo '<aside>';
     echo '<h3>Panier</h3>';
-    echo '<ul>';
+    echo '<ul id="panier">';
 
     if (array_key_exists('page', $_GET)) {
         foreach ($_SESSION['cours_choisi'] as $name => $prix) {

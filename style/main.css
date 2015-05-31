@@ -63,6 +63,10 @@ aside{
 	margin-top: 20px;
 	
 }
+#panier li{
+	list-style: none;
+	display: inline-block;
+}
 #menu {
     text-align: center;
     width: 800px;

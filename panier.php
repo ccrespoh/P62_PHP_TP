@@ -19,7 +19,7 @@ if (array_key_exists('action', $_GET) && ($_GET['action']=='remove')) {
 ?>
 <aside>
 <h3>Panier</h3>
-<ul>
+<ul id='panier'>
 <?php foreach ($_SESSION['cours_choisi'] as $name=>$prix){
  echo "<li>$name $prix</li><a href='?action=remove&&name=$name'><img src='images/button_x.png' alt='x'/></a>";}
  ?>

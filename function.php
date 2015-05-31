@@ -36,8 +36,7 @@ function afficher_article($cata, $tb_cata)
         echo '</tr>';
         echo '</table>';
         // mise de '?page=$cata' pour s'adapter au 'switch' dans catalog.php
-        //echo "<a href='?page=$cata&&action=add&&name={$val['name']}'>Participer</a>";
-        echo "<a href='inscription.php'>Participer</a>";
+        echo "<a href='?page=$cata&&action=add&&name={$val['name']}'>Participer</a>";
         echo '</div>';
     }
     echo '</div>';

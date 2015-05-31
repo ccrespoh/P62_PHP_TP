@@ -21,6 +21,7 @@ function afficher_login()
 
 function afficher_logoff()
 {
+	echo  NAME;
     echo '<form action = "#" method = "post" name="logoff_form">';
     echo '<input type = "submit" value = "Log off" name="logoff_btn">';
     echo '</form >';

@@ -1,17 +1,17 @@
 <?php
-session_start();
+/*session_start();
 if (!array_key_exists('info', $_SESSION)) {
     $_SESSION = array(
         'info' => array(),
         'cours_choisi' => array(),
     );
-}
+}*/
 
 $menu = array_key_exists('page', $_GET) ? $_GET['page'] : null;
 switch ($menu) {
 	case 'login':
 		require_once('login_tp.php');
-		require_once 'menu.php';
+		require_once 'homepage.php';
 		break;
     case 'cloud':
         require_once 'cloud.php';
@@ -26,7 +26,7 @@ switch ($menu) {
         require_once 'java.php';
         break;
     default:
-        require_once 'menu.php';
+        require_once 'homepage.php';
 }
 
 

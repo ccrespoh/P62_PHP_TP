@@ -12,11 +12,11 @@ function afficher_login()
 {
     echo '<form action = "#" method = "post" name="login_form">';
     echo '<label for="name" > User name: </label >';
-    echo '<input type = "text" id = "name" name = "name" >';
+    echo '<input type = "text" id = "name" name = "name" ><br/>';
     echo '<label for="pw" > Password: </label >';
     echo '<input type = "password" id = "pw" name = "password" >';
     echo '<input type = "submit" value = "Log in" name="login_btn">';
-    echo '</form >';
+    echo '</form ><br/>';
 }
 
 function afficher_logoff()

@@ -1,9 +1,5 @@
 <?php
-
-
-
 ?>
-
 
 <!DOCTYPE html>
 <html>

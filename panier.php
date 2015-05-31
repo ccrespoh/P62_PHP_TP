@@ -11,11 +11,16 @@ if (array_key_exists('action', $_GET) && ($_GET['action']=='add')) {
     $_SESSION['cours_choisi'][$_GET['name']] = true;  // utiliser 'key' unique (soit nom de cours) pour ne pas repeter
     header('Location:' . "http://localhost/P62_PHP/P62_PHP_TP/index_tp.php?page={$_GET['page']}");
 }
+if (array_key_exists('action', $_GET) && ($_GET['action']=='remove')) {
+   unset($_SESSION['cours_choisi'][$_GET['name']]);  // utiliser 'key' unique (soit nom de cours) pour ne pas repeter
+    header('Location:' . "http://localhost/P62_PHP/P62_PHP_TP/index_tp.php?page={$_GET['page']}");
+}
+
 ?>
 <aside>
 <h3>Panier</h3>
 <ul>
-<?php foreach ($_SESSION['cours_choisi'] as $name=>$val){ echo "<li>$name</li><a href='?action=remove'><img src='images/button_x.png' alt='x'/></a>";}?>
+<?php foreach ($_SESSION['cours_choisi'] as $name=>$val){ echo "<li>$name</li><a href='?action=remove&&name=$name'><img src='images/button_x.png' alt='x'/></a>";}?>
 </ul>
 </aside>
 

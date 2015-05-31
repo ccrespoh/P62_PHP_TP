@@ -35,15 +35,21 @@ nav ul{
 nav li{
 	list-style: none;
 	display: inline-block;
-	margin: 30px 0;
-    font-size: 1.3em;
     font-weight: bold;
     text-align: center;
-    background-color: rgba(255, 68, 82, 0.60);
-    padding: 10px 40px;
-    border-radius: 10px;
-
+    background-color: white;
+    padding: 5px 15px;
+    border-bottom:1px solid black;
     transition: background-color, color, 0.4s;
+    
+}
+nav a{
+	text-decoration: none;
+}
+nav li:hover{
+	background-color: black;
+	color: white;
+	box-shadow: 3px 3px 10px #888888;
 }
 
 
@@ -78,6 +84,7 @@ nav li:hover {
     box-shadow: 3px 3px 10px #1b1b1b;
     color: red;
 }*/
+
 
 #menu {
     text-align: center;
@@ -153,8 +160,8 @@ footer {
     position: absolute;
     right: 20px;
     top: 35px;
-    background-color: #ff5d7d;
+    background-color: black;
     border-radius: 10px;
-    color: yellow;
+    color: white;
     box-shadow: 2px 2px 5px grey;
 }

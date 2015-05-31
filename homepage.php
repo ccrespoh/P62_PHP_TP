@@ -1,3 +1,9 @@
+<?php
+require_once 'function.php';
+//if(array_key_exists('name',$_GET))
+inscrire_panier();
+?>
+
 
 <div id="menu">
     <a href="?page=cloud"><img src="img/cloud_computing.jpg" alt="cloud"></a>

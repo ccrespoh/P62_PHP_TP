@@ -1,4 +1,11 @@
 <?php
+session_start();
+if (!array_key_exists('info', $_SESSION)) {
+    $_SESSION = array(
+        'info' => array(),
+        'cours_choisi' => array(),
+    );
+}
 ?>
 
 <!DOCTYPE html>

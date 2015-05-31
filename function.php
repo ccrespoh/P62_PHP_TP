@@ -36,11 +36,40 @@ function afficher_article($cata, $tb_cata)
         echo '</tr>';
         echo '</table>';
         // mise de '?page=$cata' pour s'adapter au 'switch' dans catalog.php
-        echo array_key_exists($val['name'],$_SESSION['cours_choisi'])? "<a class='retirer' href='?page=$cata&&action=remove&&name={$val['name']}&&prix={$val['prix']}'>Retirer</a>":"<a href='?page=$cata&&action=add&&name={$val['name']}&&prix={$val['prix']}'>Participer</a>";
+        echo array_key_exists($val['name'], $_SESSION['cours_choisi']) ? "<a class='retirer' href='?page=$cata&&action=remove&&name={$val['name']}&&prix={$val['prix']}'>Retirer</a>" : "<a href='?page=$cata&&action=add&&name={$val['name']}&&prix={$val['prix']}'>Participer</a>";
         echo '</div>';
     }
     echo '</div>';
 }
 
 
+function inscrire_panier()
+{
 
+    echo "<nav><a href='?page=login' onclick='afficher_login();'><li>Sign Up</li></a><a href='inscription.php'><li>Sinscrire</li></a></nav><br/><br/>";
+
+    if (array_key_exists('action', $_GET) && ($_GET['action'] == 'add')) {
+        $_SESSION['cours_choisi'][$_GET['name']] = $_GET['prix'];
+    }
+    if (array_key_exists('action', $_GET) && ($_GET['action'] == 'remove')) {
+        unset($_SESSION['cours_choisi'][$_GET['name']]);  // utiliser 'key' unique (soit nom de cours) pour ne pas repeter
+        // header('Location:' .$_SERVER['PHP_SELF']);
+        // header('Location:' . "http://localhost/P62_PHP/P62_PHP_TP/index_tp.php?page={$_GET['page']}");
+    }
+
+    echo '<aside>';
+    echo '<h3>Panier</h3>';
+    echo '<ul>';
+
+    if (array_key_exists('page', $_GET)) {
+        foreach ($_SESSION['cours_choisi'] as $name => $prix) {
+            echo "<li>$name $prix</li><a href='?action=remove&&name=$name&&page={$_GET['page']}'><img src='images/button_x.png' alt='x'/></a>";
+        }
+    } else {
+        foreach ($_SESSION['cours_choisi'] as $name => $prix) {
+            echo "<li>$name $prix</li><a href='?action=remove&&name=$name'><img src='images/button_x.png' alt='x'/></a>";
+        }
+    }
+    echo '</ul>';
+    echo '</aside>';
+}

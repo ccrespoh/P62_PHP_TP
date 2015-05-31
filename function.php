@@ -43,10 +43,4 @@ function afficher_article($cata, $tb_cata)
 }
 
 
-function afficher_panier()
-{
-    if (array_key_exists('name', $_GET) && ($_GET['action']=='add')) {
-        $_SESSION['cours_choisi'][$_GET['name']] = true;
-        var_dump($_SESSION);
-    }
-}
+

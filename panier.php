@@ -11,7 +11,7 @@ echo "<nav><a href='?page=login' onclick='afficher_login();'><li>Sign Up</li></a
 
 if (array_key_exists('action', $_GET) && ($_GET['action']=='add')) {
     $_SESSION['cours_choisi'][$_GET['name']] = true;  // utiliser 'key' unique (soit nom de cours) pour ne pas repeter
-    header('Location:' . 'http://localhost/P62_PHP/P62_PHP_TP/index_tp.php?page=cloud');
+    header('Location:' . "http://localhost/P62_PHP/P62_PHP_TP/index_tp.php?page={$_GET['page']}");
 }
 
 var_dump($_SESSION['cours_choisi']);

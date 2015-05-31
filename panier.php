@@ -15,7 +15,7 @@ if (array_key_exists('action', $_GET) && ($_GET['action']=='add')) {
 <aside>
 <h3>Panier</h3>
 <ul>
-<?php foreach ($_SESSION['cours_choisi'] as $name=>$val){ echo "<li>$name</li><img src='img/button_x.png'/>";}?>
+<?php foreach ($_SESSION['cours_choisi'] as $name=>$val){ echo "<li>$name</li><a href='?action=remove'><img src='images/button_x.png' alt='x'/></a>";}?>
 </ul>
 </aside>
 

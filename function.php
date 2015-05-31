@@ -36,7 +36,7 @@ function afficher_article($cata, $tb_cata)
         echo '</tr>';
         echo '</table>';
         // mise de '?page=$cata' pour s'adapter au 'switch' dans catalog.php
-        echo array_key_exists($val['name'],$_SESSION['cours_choisi'])? "<a class='retirer' href='?page=$cata&&action=remove&&name&&={$val['name']}&&prix={$val['prix']}'>Retirer</a>":"<a href='?page=$cata&&action=add&&name={$val['name']}&&prix={$val['prix']}'>Participer</a>";
+        echo array_key_exists($val['name'],$_SESSION['cours_choisi'])? "<a class='retirer' href='?page=$cata&&action=remove&&name={$val['name']}&&prix={$val['prix']}'>Retirer</a>":"<a href='?page=$cata&&action=add&&name={$val['name']}&&prix={$val['prix']}'>Participer</a>";
         echo '</div>';
     }
     echo '</div>';

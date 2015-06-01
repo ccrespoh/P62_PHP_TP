@@ -1,11 +1,10 @@
 <?php
-
 $menu = array_key_exists('page', $_GET) ? $_GET['page'] : null;
 switch ($menu) {
-	case 'login':
+	/*case 'login':
 		require_once('login_tp.php');
 		require_once 'homepage.php';
-		break;
+		break;*/
     case 'cloud':
         require_once 'cloud.php';
         break;
@@ -21,6 +20,7 @@ switch ($menu) {
     default:
         require_once 'homepage.php';
 }
+
 
 
 

@@ -52,16 +52,18 @@ nav li:hover{
 	box-shadow: 3px 3px 10px #888888;
 }
 #identification{
-float:left;
-	
+/*float:left;*/
+	border: 1px solid black;
+    /*width: 190px;*/
 }
+
 aside{
 	border:1px solid black;
-	display:inline-block;
-	clear:left;
-	width:15%;
+	/*display:inline-block;*/
+	/*clear:left;*/
+	/*width:190px;*/
 	margin-top: 20px;
-	
+	/*display: block;*/
 }
 #panier li{
 	list-style: none;
@@ -70,9 +72,12 @@ aside{
 #menu {
     text-align: center;
     width: 800px;
-    margin: auto;
-    float: right;
+    /*margin: auto;*/
+    /*float: right;*/
     /*border: 1px solid black;*/
+}
+#main, #menu{
+    display: inline-block;
 }
 
 #menu img {
@@ -99,10 +104,18 @@ footer {
 
 .article {
     width: 800px;
-    margin: auto;
-    float: right;
+    /*margin: auto;*/
+    /*float: right;*/
     /*border: 1px solid black;*/
     text-align: left;
+}
+#main{
+    /*border: 1px solid black;*/
+    width: 190px;
+}
+#main, .article{
+    display: inline-block;
+    vertical-align: top;
 }
 .article h2{
     text-align: center;

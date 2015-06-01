@@ -15,7 +15,11 @@ function afficher_login()
     echo '<input type = "text" id = "name" name = "name" ><br/>';
     echo '<label for="pw" > Password: </label >';
     echo '<input type = "password" id = "pw" name = "password" >';
-    echo '<input type = "submit" value = "Log in" name="login_btn">';
+    echo '<br/>';
+    echo '<input type = "submit" value = "Se connecter" name="login_btn">';
+    echo '<br/>';
+
+    echo '<input type = "submit" value = "Créer un compte" name="login_btn">';
     echo '</form ><br/>';
 }
 
@@ -28,16 +32,9 @@ function afficher_logoff()
 }
 
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8"/>
-    <title>Untitled</title>
 
-</head>
-<body>
-<div id="identification">
     <?php
+    echo '<div id="identification">';
     if ($logoff_clique) {
         setcookie('status', null);
         afficher_login();
@@ -52,7 +49,5 @@ function afficher_logoff()
     } else {
         afficher_login();
     }
+    echo '</div>';
     ?>
-</div>
-</body>
-</html>

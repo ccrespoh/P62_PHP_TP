@@ -48,7 +48,7 @@ function afficher_article($cata, $tb_cata)
 function inscrire_panier()
 {
 
-    echo "<nav><a href='?page=login' onclick='afficher_login();'><li>Sign Up</li></a><a href='inscription.php'><li>Sinscrire</li></a></nav><br/><br/>";
+    //echo "<nav><a href='?page=login' onclick='afficher_login();'><li>Se connecter</li></a><a href='inscription.php'><li>Créer un compte</li></a></nav><br/><br/>";
 
     if (array_key_exists('action', $_GET) && ($_GET['action'] == 'add')) {
         $_SESSION['cours_choisi'][$_GET['name']] = $_GET['prix'];

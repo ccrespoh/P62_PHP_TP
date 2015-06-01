@@ -1,16 +1,13 @@
 <?php
-echo "<ul>";
-echo "<li>AFNET WORKING</li>";
-echo "<li>ASI HTTP REQUEST</li>";
-echo "<li>BOX 2D</li>";
-echo "<li>COCOS 2D</li>";
-echo "<li>FM DATABASE</li>";
-echo "<li>JSON</li>";
-echo "<li>MB PROGRESS HUD</li>";
-echo "<li>OPENGLES</li>";
-echo "<li>SD WEB</li>";
-echo "<li>THREE20</li>";
-echo "<li>UNITY 3D</li>";
-echo "</ul>";
-?>
+require_once 'function.php';
+require_once 'data.php';
+
+echo '<div id="main">';
+require_once('login_tp.php');
+inscrire_panier();
+echo '</div>';
+
+$tb_ios = demander_data('ios', $data);
+
+afficher_article('ios', $tb_ios);
 

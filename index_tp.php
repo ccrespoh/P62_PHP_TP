@@ -1,3 +1,14 @@
+<?php
+session_start();
+if (!array_key_exists('info', $_SESSION)) {
+    $_SESSION = array(
+        'cours_choisi' => array(),
+    );
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -9,7 +20,6 @@
 <div id="wrapper">
     <?php
     require_once 'header.php';
-    require_once 'login_tp.php';
     require_once 'catalog.php';
     require_once 'footer.php';
     ?>

@@ -1,8 +1,5 @@
-<?php
-echo "<nav><a href='index_tp.php' Onclick='afficher_login();'><li>Sign Up</li></a><a href='inscription.php'><li>S'inscrire</li></a> </nav>";
-?>
-<?php
 
+<?php
 define('NAME', 'admin');
 define('PASSWORD', '123');
 
@@ -15,31 +12,29 @@ function afficher_login()
 {
     echo '<form action = "#" method = "post" name="login_form">';
     echo '<label for="name" > User name: </label >';
-    echo '<input type = "text" id = "name" name = "name" >';
+    echo '<input type = "text" id = "name" name = "name" ><br/>';
     echo '<label for="pw" > Password: </label >';
     echo '<input type = "password" id = "pw" name = "password" >';
-    echo '<input type = "submit" value = "Log in" name="login_btn">';
-    echo '</form >';
+    echo '<br/>';
+    echo '<input type = "submit" value = "Se connecter" name="login_btn">';
+    echo '<br/>';
+
+    echo '<input type = "submit" value = "Créer un compte" name="login_btn">';
+    echo '</form ><br/>';
 }
 
 function afficher_logoff()
 {
+	echo  NAME;
     echo '<form action = "#" method = "post" name="logoff_form">';
     echo '<input type = "submit" value = "Log off" name="logoff_btn">';
     echo '</form >';
 }
 
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8"/>
-    <title>Untitled</title>
 
-</head>
-<body>
-<div id="identification">
     <?php
+    echo '<div id="identification">';
     if ($logoff_clique) {
         setcookie('status', null);
         afficher_login();
@@ -54,7 +49,5 @@ function afficher_logoff()
     } else {
         afficher_login();
     }
+    echo '</div>';
     ?>
-</div>
-</body>
-</html>

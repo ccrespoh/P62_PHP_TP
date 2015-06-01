@@ -35,19 +35,13 @@ var_dump($_POST);
             <label class="left" for="date">Date de naissance : </label><input id="date" type="date" required="required">
 
             <fieldset id="fieldset3">
-
                 <legend >Payement :</legend>
                 <label class="left" id="label_card" for="card">Carte de crédit : </label>
-
                 <input id="card"  type="text" placeholder="Numéro de carte crédit" required="required">
-
                 <label class="left" id="label_code" for="code">Code de sécurité : </label>
                 <input id="code"  type="text" placeholder="3 chiffre" maxlength="3" value size="4" required="required">
-
                 <label class="left" id="label_expiration" for="expire">Date d'expiration : </label><input id="expire" type="month" required="required">
-
             </fieldset>
-
             <div id="div_agree"><input id="agree" type="checkbox"><label id="label_agree" for="agree"> j'ai lu <a href="javascript:"> les modalités</a>.</label></div>
             <input id="submit" type="submit" value="Soumettre">
             <input id="reset" type="reset" value="Effacer">

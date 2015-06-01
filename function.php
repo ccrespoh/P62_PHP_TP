@@ -64,6 +64,13 @@ function inscrire_panier($tb)
         }
     }
     echo '</ul>';
+    $sum=0;
+    foreach ($_SESSION['cours_choisi'] as $name => $prix) {
+        $sum=$prix+$sum;
+    }
+
+    echo '<h6>','Prix Total='.$prix .'</h6>';
+    echo '<input type="button" name="checkout" value="checkout" />';
     echo '</aside>';
 }
 

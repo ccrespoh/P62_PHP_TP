@@ -3,7 +3,7 @@ require_once 'function.php';
 
 echo '<div id="main">';
 require_once('login_tp.php');
-inscrire_panier();
+inscrire_panier($tb_info);
 echo '</div>';
 ?>
 

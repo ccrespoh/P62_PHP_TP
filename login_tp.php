@@ -1,10 +1,8 @@
 
 <?php
-define('NAME', 'admin');
-define('PASSWORD', '123');
 
-$name_ok = array_key_exists('name', $_POST) && ($_POST['name'] == NAME);
-$password_ok = array_key_exists('password', $_POST) && ($_POST['password'] == PASSWORD);
+$name_ok = array_key_exists('name', $_POST) && ($_POST['name'] == 'admin');
+$password_ok = array_key_exists('password', $_POST) && ($_POST['password'] == 123);
 $cookie_exist = array_key_exists('status', $_COOKIE) && ($_COOKIE['status'] == 'login');
 $logoff_clique = array_key_exists('logoff_btn', $_POST) && ($_POST['logoff_btn'] == 'Log off');
 
@@ -26,7 +24,7 @@ function afficher_login()
 
 function afficher_logoff()
 {
-	echo  NAME;
+	echo  'Bonjour '.$_POST['name'];
     echo '<form action = "#" method = "post" name="logoff_form">';
     echo '<input type = "submit" value = "Log off" name="logoff_btn">';
     echo '</form >';
@@ -46,7 +44,7 @@ function afficher_logoff()
         afficher_logoff();
     } elseif (array_key_exists('name', $_POST) || array_key_exists('password', $_POST)) {
         afficher_login();
-        echo '<h3>User name or password incorrect !</h3>';
+        echo '<p>User name or password incorrect !</p>';
     } else {
         afficher_login();
     }

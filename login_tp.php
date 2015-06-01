@@ -19,8 +19,8 @@ function afficher_login()
     echo '<input type = "submit" value = "Se connecter" name="login_btn"/>';
     echo '<br/>';
     echo '</form ><br/>';
-    echo '<form action = "inscription.php" method = "post" name="login_btn">';
-    echo '<input type = "submit" value = "Créer un compte" name="login_btn" />';
+    echo '<form action = "inscription.php" method = "post" name="inscription_form">';
+    echo '<input type = "submit" value = "Créer un compte" name="inscription_btn" />';
     echo '</form ><br/>';
 }
 

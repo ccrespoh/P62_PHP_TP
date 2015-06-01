@@ -50,15 +50,15 @@ function inscrire_panier()
 
     //echo "<nav><a href='?page=login' onclick='afficher_login();'><li>Se connecter</li></a><a href='inscription.php'><li>Créer un compte</li></a></nav><br/><br/>";
 
-    if (array_key_exists('action', $_GET) && ($_GET['action'] == 'add')) {
+   /* if (array_key_exists('action', $_GET) && ($_GET['action'] == 'add')) {
         $_SESSION['cours_choisi'][$_GET['name']] = $_GET['prix'];
+      //  header('Location:' . $_SERVER['PHP_SELF']."?page={$_GET['page']}");
+
     }
     if (array_key_exists('action', $_GET) && ($_GET['action'] == 'remove')) {
         unset($_SESSION['cours_choisi'][$_GET['name']]);  // utiliser 'key' unique (soit nom de cours) pour ne pas repeter
-        // header('Location:' .$_SERVER['PHP_SELF']);
-        // header('Location:' . "http://localhost/P62_PHP/P62_PHP_TP/index_tp.php?page={$_GET['page']}");
-    }
 
+    }*/
     echo '<aside>';
     echo '<h3>Panier</h3>';
     echo '<ul id="panier">';
@@ -73,6 +73,13 @@ function inscrire_panier()
         }
     }
     echo '</ul>';
+    $sum=0;
+    foreach ($_SESSION['cours_choisi'] as $name => $prix) {
+        $sum=$prix+$sum;
+    }
+
+    echo '<h6>','Prix Total='.$prix .'</h6>';
+    echo '<input type="button" name="checkout" value="checkout" />';
     echo '</aside>';
 }
 
@@ -100,16 +107,17 @@ function read_txt()
 
 
 /**       Trouver informations d'un client dans 'client.txt', et former un array
- * @param $username: chercher par username
+ * @param $username : chercher par username
  * @return mixed:  return un array de ce client
  */
 function demander_info_client($username)
 {
+    $tb=array();
     foreach (read_txt() as $val) {
         if ($username == $val['username']) {
             $tb = $val;
-            return $tb;
             break;
         }
     }
+    return $tb;
 }

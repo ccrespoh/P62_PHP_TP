@@ -2,7 +2,7 @@
     require_once 'header.php';
     require_once 'function.php';
 	require_once 'data.php';
-    
+var_dump($_POST);
     ?>
 <!DOCTYPE html>
 <html>
@@ -10,43 +10,43 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="style/main.css"/>
+    <link rel="stylesheet" href="style/formulaire.css"/>
 </head>
 <body>
 <div id="wrapper">
-    <h3>Inscription</h3>
-<form name="formulaire" method="post" action="attestation.php">
-    <label for="nom">User:</label>
-    <input type="text" name="nom"/>
-    <label for="password">Password:</label>
-    <input type="password" name="password"/>
-    <label for="email">Email:</label>
-    <input type="email" name="email"/>
-    <label for="area">Section:</label>
-    <input  name="area" list="area"/>
-        <datalist id="area">   
-    <?php
-    foreach($data as $cata=>$area){
-        echo"<option >$area</option>"; //OPTIONS ARE: CLOUD, FRONT END, IOS, JAVA
-    }
-    ?>
-</datalist>
-    <!--<select name="area">
-        <option>Cloud</option>
-        <option>Front End</option>
-        <option>IOS</option>
-        <option>Java</option>
-    </select>-->
-    <label for="course">Course:</label>
-    <select name="course">
-    <?php
+    <form action="attestation.php" id="formulaire" method="post">
+        <fieldset>
+            <legend>Créer un compte</legend>
+            <label class="left" for="user_name">Nom d'utilisateur : </label><input id="user_name" type="text"
+                                                                                    pattern="[a-zA-Z0-9]{4,8}"
+                                                                                    placeholder="Entrez 4 à 8 caractàres"
+                                                                                    title="chaîne de caractère de 4 à 8 caractàre"
+                                                                                    required="required">
+            <label class="left" for="password">Mot de passe : </label><input id="password"
+                                                                              placeholder="Avec chiffre et lettre"
+                                                                              title="4 à 8 caractàre" type="password"
+                                                                              required="required">
+            <label class="left" for="password2">Confirmer : </label><input id="password2"
+                                                                           placeholder="Confirmer mot de passe"
+                                                                           title="4 à 8 caractàre" type="password"
+                                                                           required="required">
+            <label class="left" for="email">Adresse courriel : </label><input id="email" type="email"
+                                                                              required="required">
+            <label class="left" for="date">Date de naissance : </label><input id="date" type="date" required="required">
 
-        $tb_cloud = demander_data('cloud', $data);
-		echo "<option>afficher_article($tb_cloud);</option>"
-        ?>
-    </select>
-    <div><input type="submit" value="envoyer"/></div>
-</form>
-
+            <fieldset id="fieldset3">
+                <legend >Payement :</legend>
+                <label class="left" id="label_card" for="card">Carte de crédit : </label>
+                <input id="card"  type="text" placeholder="Numéro de carte crédit" required="required">
+                <label class="left" id="label_code" for="code">Code de sécurité : </label>
+                <input id="code"  type="text" placeholder="3 chiffre" maxlength="3" value size="4" required="required">
+                <label class="left" id="label_expiration" for="expire">Date d'expiration : </label><input id="expire" type="month" required="required">
+            </fieldset>
+            <div id="div_agree"><input id="agree" type="checkbox"><label id="label_agree" for="agree"> j'ai lu <a href="javascript:"> les modalités</a>.</label></div>
+            <input id="submit" type="submit" value="Soumettre">
+            <input id="reset" type="reset" value="Effacer">
+        </fieldset>
+    </form>
 </div>
 <?php
 require_once 'footer.php';

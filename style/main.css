@@ -64,11 +64,25 @@ aside{
 	/*width:190px;*/
 	margin-top: 20px;
 	/*display: block;*/
+    background-color: rgba(67,66,76,0.62);
+}
+aside>h3,h6{
+    margin:5px 15px;
+}
+#panier{
+    border:1px dashed black;
+    margin:5px 15px;
+    padding:5px 10px;
 }
 #panier li{
 	list-style: none;
 	display: inline-block;
+
 }
+#panier img{
+    float:right;
+}
+
 #menu {
     text-align: center;
     width: 800px;

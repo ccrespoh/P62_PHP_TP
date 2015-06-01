@@ -1,0 +1,81 @@
+form{
+	font-size: small;
+}
+input, label{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+ fieldset {
+    margin: 50px auto;
+    border:1px solid darkgray;
+    width: 360px;
+     padding-left: 20px ;
+}
+ #fieldset3{
+     width: 330px;
+     margin: 15px 0;
+     padding-left: 5px;
+ }
+
+#formulaire input:not(#agree), #formulaire .left, #div_agree, #formulaire label:not(#label_agree){
+    float: left;
+}
+
+#formulaire .left, #div_agree,#submit{
+    clear: left;
+}
+
+#formulaire .left:not(#label_expiration):not(#label_card):not(#label_code){
+    width: 170px;
+}
+#label_expiration, #label_card,#label_code{
+    width: 147px;
+}
+
+#expire, #card{
+    width: 170px;
+}
+legend{
+   color: rgb(44, 62, 255);
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#formulaire input:valid:not([type=submit]){
+    background-color: rgba(120, 239, 121, 0.38);
+}
+
+input[type=submit],input[type=reset]{
+font-weight: bold;
+    font-size: 90%;
+    margin-right: 5px;
+}
+
+#submit,#reset{
+    margin: 10px 45px 0 45px;
+}
+
+@media (max-width: 590px) {
+
+    /*#form1 .left,#form2 .left, #div_agree, #div_memory{
+        width: 160px;
+    }*/
+    fieldset{
+        width: 210px;
+        background-color: #f3f3f3;
+    }
+
+    #fieldset3{
+        width: 150px;
+    }
+    input{
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+    #submit,#reset{
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+}
+

@@ -1,9 +1,19 @@
 <?php
 session_start();
-if (!array_key_exists('info', $_SESSION)) {
+if (!array_key_exists('cours_choisi', $_SESSION)) {
     $_SESSION = array(
         'cours_choisi' => array(),
     );
+}
+
+if (array_key_exists('action', $_GET) && ($_GET['action'] == 'add')) {
+    $_SESSION['cours_choisi'][$_GET['name']] = $_GET['prix'];
+    //  header('Location:' . $_SERVER['PHP_SELF']."?page={$_GET['page']}");
+
+}
+if (array_key_exists('action', $_GET) && ($_GET['action'] == 'remove')) {
+    unset($_SESSION['cours_choisi'][$_GET['name']]);  // utiliser 'key' unique (soit nom de cours) pour ne pas repeter
+
 }
 
 

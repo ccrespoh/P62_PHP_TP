@@ -1,18 +1,47 @@
 <?php
+
+$info_client = array(
+    'info' => array(
+        'username' => 'admin',
+        'password' => '123',
+        'nom' => 'Couillard',
+        'prenom' => 'Philippe',
+        'email' => 'abc@abc.com',
+        'adress' => 'Montreal',
+        'tel' => '514',
+        'cart_credit' => '12345'),
+    'cours_choisi' => array(
+        'hadoop' => 84,
+        'linux' => 84,)
+);
+
 session_start();
-if (!array_key_exists('cours_choisi', $_SESSION)) {
-    $_SESSION = array(
-        'cours_choisi' => array(),
-    );
+var_dump($_COOKIE);
+
+$tb_info = array();
+
+//juger s'il faut utiliser informations de base donnees ou de $_SESSION
+if (array_key_exists('status', $_COOKIE) && ($_COOKIE['status'] == 'login')) {
+    $tb_info = $info_client;
+    var_dump('cookie');
+} elseif (!array_key_exists('cours_choisi', $_SESSION)) {
+    $_SESSION['cours_choisi']= array();
+
+    var_dump('session vide');
+    var_dump($_SESSION['cours_choisi']);
+
+} else {
+    $tb_info = $_SESSION;
+    var_dump('session existe deja');
 }
 
 if (array_key_exists('action', $_GET) && ($_GET['action'] == 'add')) {
-    $_SESSION['cours_choisi'][$_GET['name']] = $_GET['prix'];
+    $tb_info['cours_choisi'][$_GET['name']] = $_GET['prix'];
     //  header('Location:' . $_SERVER['PHP_SELF']."?page={$_GET['page']}");
 
 }
 if (array_key_exists('action', $_GET) && ($_GET['action'] == 'remove')) {
-    unset($_SESSION['cours_choisi'][$_GET['name']]);  // utiliser 'key' unique (soit nom de cours) pour ne pas repeter
+    unset($tb_info['cours_choisi'][$_GET['name']]);  // utiliser 'key' unique (soit nom de cours) pour ne pas repeter
 
 }
 

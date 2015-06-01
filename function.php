@@ -19,8 +19,9 @@ function demander_data($cata, $tb_complet)
 /**
  * @param $cata :    nom de CATALOG qu'on veut
  * @param $tb_cata :     array de data qu'on a extraire de $data
+ * @param $tb :  utiliser $tb_info pour choisir si c'est des infos de base donnee ou $_SESION
  */
-function afficher_article($cata, $tb_cata)
+function afficher_article($cata, $tb_cata, $tb)
 {
     echo '<div class="article">';
     echo $cata == 'cloud' ? '<h2>Cours de Cloud Computing</h2>' : "<h2>Cours de $cata</h2>";
@@ -36,39 +37,29 @@ function afficher_article($cata, $tb_cata)
         echo '</tr>';
         echo '</table>';
         // mise de '?page=$cata' pour s'adapter au 'switch' dans catalog.php
-        echo array_key_exists($val['name'], $_SESSION['cours_choisi']) ? "<a class='retirer' href='?page=$cata&&action=remove&&name={$val['name']}&&prix={$val['prix']}'>Retirer</a>" : "<a href='?page=$cata&&action=add&&name={$val['name']}&&prix={$val['prix']}'>Participer</a>";
+        echo array_key_exists($val['name'], $tb['cours_choisi']) ? "<a class='retirer' href='?page=$cata&&action=remove&&name={$val['name']}&&prix={$val['prix']}'>Retirer</a>" : "<a href='?page=$cata&&action=add&&name={$val['name']}&&prix={$val['prix']}'>Participer</a>";
         echo '</div>';
     }
     echo '</div>';
 }
 
-/**
- *    creer la partie d'inscription, de login, et de panier
+
+/**  creer la partie d'inscription, de login, et de panier
+ * @param $tb : utiliser $tb_info pour choisir si c'est des infos de base donnee ou $_SESION
  */
-function inscrire_panier()
+function inscrire_panier($tb)
 {
 
-    //echo "<nav><a href='?page=login' onclick='afficher_login();'><li>Se connecter</li></a><a href='inscription.php'><li>Créer un compte</li></a></nav><br/><br/>";
-
-   /* if (array_key_exists('action', $_GET) && ($_GET['action'] == 'add')) {
-        $_SESSION['cours_choisi'][$_GET['name']] = $_GET['prix'];
-      //  header('Location:' . $_SERVER['PHP_SELF']."?page={$_GET['page']}");
-
-    }
-    if (array_key_exists('action', $_GET) && ($_GET['action'] == 'remove')) {
-        unset($_SESSION['cours_choisi'][$_GET['name']]);  // utiliser 'key' unique (soit nom de cours) pour ne pas repeter
-
-    }*/
     echo '<aside>';
     echo '<h3>Panier</h3>';
     echo '<ul id="panier">';
 
     if (array_key_exists('page', $_GET)) {
-        foreach ($_SESSION['cours_choisi'] as $name => $prix) {
+        foreach ($tb['cours_choisi'] as $name => $prix) {
             echo "<li>$name $prix</li><a href='?action=remove&&name=$name&&page={$_GET['page']}'><img src='images/button_x.png' alt='x'/></a>";
         }
     } else {
-        foreach ($_SESSION['cours_choisi'] as $name => $prix) {
+        foreach ($tb['cours_choisi'] as $name => $prix) {
             echo "<li>$name $prix</li><a href='?action=remove&&name=$name'><img src='images/button_x.png' alt='x'/></a>";
         }
     }
@@ -112,7 +103,7 @@ function read_txt()
  */
 function demander_info_client($username)
 {
-    $tb=array();
+    $tb = array();
     foreach (read_txt() as $val) {
         if ($username == $val['username']) {
             $tb = $val;

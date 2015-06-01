@@ -1,6 +1,6 @@
 <?php
 require_once 'function.php';
-//if(array_key_exists('name',$_GET))
+
 inscrire_panier();
 ?>
 

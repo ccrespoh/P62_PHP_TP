@@ -42,7 +42,9 @@ function afficher_article($cata, $tb_cata)
     echo '</div>';
 }
 
-
+/**
+ *    creer la partie d'inscription, de login, et de panier
+ */
 function inscrire_panier()
 {
 
@@ -72,4 +74,42 @@ function inscrire_panier()
     }
     echo '</ul>';
     echo '</aside>';
+}
+
+
+/**
+ *    Mettre array dans fichier txt
+ * @param $tb :   Array des clients
+ */
+function write_txt($tb)
+{
+    $tb_client = fopen("client.txt", "w") or die("Unable to open file!");
+    fwrite($tb_client, json_encode($tb));
+    fclose($tb_client);
+}
+
+
+/**   Lire array dans fichier txt
+ * @return mixed:  Sorti de array
+ */
+function read_txt()
+{
+    $tb = json_decode(file_get_contents("client.txt"), true);  // 此处的true用于强制转换成PHP格式的array
+    return $tb;
+}
+
+
+/**       Trouver informations d'un client dans 'client.txt', et former un array
+ * @param $username: chercher par username
+ * @return mixed:  return un array de ce client
+ */
+function demander_info_client($username)
+{
+    foreach (read_txt() as $val) {
+        if ($username == $val['username']) {
+            $tb = $val;
+            return $tb;
+            break;
+        }
+    }
 }

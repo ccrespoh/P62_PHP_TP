@@ -2,10 +2,11 @@
 session_start();
 if (!array_key_exists('info', $_SESSION)) {
     $_SESSION = array(
-        'info' => array(),
         'cours_choisi' => array(),
     );
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +20,6 @@ if (!array_key_exists('info', $_SESSION)) {
 <div id="wrapper">
     <?php
     require_once 'header.php';
-    require_once 'panier.php';
     require_once 'catalog.php';
     require_once 'footer.php';
     ?>

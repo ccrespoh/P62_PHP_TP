@@ -38,8 +38,13 @@ function afficher_article($cata, $tb_cata)
         echo "<th>{$val['name']}</th><th>{$val['heures']}</th><th>{$val['personnes']}</th><th>{$val['prix']} $</th>";
         echo '</tr>';
         echo '</table>';
+        if (isset($_SESSION['user_id'])) {
+            $array_a_choisi = read_txt()[$_SESSION['user_id']]['cours_choisi'];
+        }else{
+            $array_a_choisi = $_SESSION['cours_choisi'];
+        }
         // mise de '?page=$cata' pour s'adapter au 'switch' dans catalog.php
-        echo array_key_exists($val['name'], $_SESSION['cours_choisi']) ? "<a class='retirer' href='?page=$cata&&action=remove&&name={$val['name']}&&prix={$val['prix']}'>Retirer</a>" : "<a href='?page=$cata&&action=add&&name={$val['name']}&&prix={$val['prix']}'>Participer</a>";
+        echo array_key_exists($val['name'], $array_a_choisi) ? "<a class='retirer' href='?page=$cata&&action=remove&&name={$val['name']}&&prix={$val['prix']}'>Retirer</a>" : "<a href='?page=$cata&&action=add&&name={$val['name']}&&prix={$val['prix']}'>Participer</a>";
         echo '</div>';
     }
     echo '</div>';
@@ -59,8 +64,7 @@ function inscrire_panier()
         foreach (read_txt()[$_SESSION['user_id']]['cours_choisi'] as $name => $prix) {
             echo "<li>$name $prix</li><a href='?action=remove&&name=$name'><img src='images/button_x.png' alt='x'/></a>";
         }
-    }
-    elseif (array_key_exists('page', $_GET)) {
+    } elseif (array_key_exists('page', $_GET)) {
         foreach ($_SESSION['cours_choisi'] as $name => $prix) {
             echo "<li>$name $prix</li><a href='?action=remove&&name=$name&&page={$_GET['page']}'><img src='images/button_x.png' alt='x'/></a>";
         }
@@ -122,15 +126,15 @@ function demander_info_client($username)
 
 
 /**  juger si username et password dans ( $_POST ) correspondent a base de donnee
-* @param $username
+ * @param $username
  * @param $password
  * @return bool|int|string:   Si oui, renvoyer indice de array. Si non, renvoyer boolean false.
  */
 function username_password_correct($username, $password)
 {
     $id = false;
-    foreach (read_txt() as $index=>$val) {
-        if (($username == $val['username'])&&($val['password'] == $password)) {
+    foreach (read_txt() as $index => $val) {
+        if (($username == $val['username']) && ($val['password'] == $password)) {
             $id = $index;
             break;
         }

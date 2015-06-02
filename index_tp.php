@@ -1,6 +1,7 @@
 <?php
 require_once 'data.php';
 require_once 'function.php';
+start_db();
 
 
 session_start();

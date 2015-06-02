@@ -1,8 +1,10 @@
 <?php
 require_once 'function.php';
+$conn;
 
 function afficher_login()
 {
+
     echo '<form action = "#" method = "post" name="login_form">';
     echo '<label for="name" > User name: </label >';
     echo '<input type = "text" id = "name" name = "name" /><br/>';
@@ -19,11 +21,12 @@ function afficher_login()
 
 function afficher_logoff($id)
 {
+    global $consultation;
     echo '<form action = "#" method = "post" name="logoff_form">';
     echo '<input type = "submit" value = "Log off" name="logoff_btn">';
     echo '</form >';
     echo '<h3 class="red_bold">Bonjour</h3><h3 class="red_bold">';
-    echo read_txt()[$id]['prenom'] .' '. read_txt()[$id]['nom'].'</h3>';
+    echo $consultation[$id]['prenom'] .' '. $consultation[$id]['nom'].'</h3>';
 }
 
 
@@ -34,8 +37,8 @@ if (array_key_exists('logoff_btn', $_POST)) {
     $_SESSION['cours_choisi']=array();   //utiliser array() pour vider, parce que 'null' cause probleme ailleure
     //session_destroy();
     afficher_login();
-} elseif (array_key_exists('name', $_POST) && username_password_correct($_POST['name'], $_POST['password'])) {
-    $user_id = username_password_correct($_POST['name'], $_POST['password']);
+} elseif (array_key_exists('name', $_POST) && user_exists($_POST['name'], $_POST['password'])) {
+    $user_id = user_exists($_POST['name'], $_POST['password']);
     afficher_logoff($user_id);
     $_SESSION['user_id'] = $user_id;
 } elseif (isset($_SESSION['user_id'])) {

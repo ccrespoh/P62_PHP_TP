@@ -44,7 +44,11 @@ function afficher_article($cata, $tb_cata)
     }
     echo '</div>';
 }
+function remove_all(){
+    var_dump('hi');
+  $_SESSION['cours_choisi']=0;
 
+}
 
 /**  creer la partie d'inscription, de login, et de panier
  */

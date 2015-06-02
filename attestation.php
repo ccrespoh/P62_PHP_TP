@@ -20,7 +20,6 @@ if ($connexion->query($sql) === TRUE) {
 
 $connexion->close();
 ?>
-?>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -29,9 +28,9 @@ $connexion->close();
 </head>
 <body>
 <?php
-if (isset($nom) && isset($email) && isset($area)&& isset($course)){
+if (isset($nom) && isset($email)){
     echo "<h1>Reception d'Incription Employe</h1>";
-    echo "Le utilisateur $nom, avec l'email: $email, est inscript dans le cours $course, dans le domaine $area";
+    echo "Le utilisateur $nom, avec l'email: $email, est inscript dans le cours";
 }else{
     echo "Donnees de formulaire invalidees";
 }

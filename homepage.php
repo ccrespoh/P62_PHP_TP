@@ -1,12 +1,7 @@
 <?php
 require_once 'function.php';
 
-echo '<div id="main">';
-require_once('login_tp.php');
-inscrire_panier();
-echo '</div>';
 ?>
-
 
 <div id="menu">
     <a href="?page=cloud"><img src="img/cloud_computing.jpg" alt="cloud"></a>

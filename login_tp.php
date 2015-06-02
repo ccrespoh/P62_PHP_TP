@@ -30,8 +30,8 @@ function afficher_logoff($id)
 echo '<div id="identification">';
 
 if (array_key_exists('logoff_btn', $_POST)) {
-    $_SESSION['user_id']=null;
-    $_SESSION['cours_choisi']=array();
+    $_SESSION['user_id']=null;   // utiliser 'null' pour vider, ailleure on utiliser isset au lieu de array_key_exist
+    $_SESSION['cours_choisi']=array();   //utiliser array() pour vider, parce que 'null' cause probleme ailleure
     //session_destroy();
     afficher_login();
 } elseif (array_key_exists('name', $_POST) && username_password_correct($_POST['name'], $_POST['password'])) {

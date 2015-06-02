@@ -178,3 +178,8 @@ footer {
 .article .retirer{
     background-color: #ff4452;
 }
+
+.red_bold{
+    font-weight: bold;
+    color: red;
+}

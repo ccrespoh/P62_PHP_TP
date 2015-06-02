@@ -12,34 +12,34 @@ for ($i = 1; $i <= 55; $i++) {
 }*/
 //var_export($data);
 
-//$info_client = array(
-//    1 => array(
-//        'username' => 'admin',
-//        'password' => '123',
-//        'nom' => 'Couillard',
-//        'prenom' => 'Philippe',
-//        'email' => 'abc@abc.com',
-//        'adress' => 'Montreal',
-//        'tel' => '514',
-//        'cart_credit' => '12345',
-//        'cours_choisi' => array(
-//            'hadoop' => 84,
-//            'linux' => 84,),
-//    ),
-//    2 => array(
-//        'username' => 'minmin',
-//        'password' => '123',
-//        'nom' => 'Philippe',
-//        'prenom' => 'Couillard',
-//        'email' => 'abc@abc.com',
-//        'adress' => 'Montreal',
-//        'tel' => '514',
-//        'cart_credit' => '12345',
-//        'cours_choisi' => array(
-//            'hadoop' => 84,
-//            'linux' => 84,),
-//    ),
-//);
+$info_client = array(
+    1 => array(
+        'username' => 'admin',
+        'password' => '123',
+        'nom' => 'Couillard',
+        'prenom' => 'Philippe',
+        'email' => 'abc@abc.com',
+        'adress' => 'Montreal',
+        'tel' => '514',
+        'cart_credit' => '12345',
+        'cours_choisi' => array(
+            'hadoop' => 84,
+            'linux' => 84,),
+    ),
+    2 => array(
+        'username' => 'minmin',
+        'password' => '123',
+        'nom' => 'Philippe',
+        'prenom' => 'Couillard',
+        'email' => 'abc@abc.com',
+        'adress' => 'Montreal',
+        'tel' => '514',
+        'cart_credit' => '12345',
+        'cours_choisi' => array(
+            'hadoop' => 84,
+            'linux' => 84,),
+    ),
+);
 
 $data = array(
     1 => array(

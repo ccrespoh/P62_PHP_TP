@@ -90,7 +90,7 @@ function inscrire_panier()
  *    Mettre array dans fichier txt
  * @param $tb :   Array des clients
  */
-function write_txt($tb)
+function write_txt($tb)    // 此处 用 file_put_contents 更方便
 {
     $tb_client = fopen("client.txt", "w") or die("Unable to open file!");
     fwrite($tb_client, json_encode($tb));

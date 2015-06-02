@@ -40,7 +40,7 @@ function afficher_article($cata, $tb_cata)
         echo '</table>';
         if (isset($_SESSION['user_id'])) {
             $array_a_choisi = read_txt()[$_SESSION['user_id']]['cours_choisi'];
-        }else{
+        } else {
             $array_a_choisi = $_SESSION['cours_choisi'];
         }
         // mise de '?page=$cata' pour s'adapter au 'switch' dans catalog.php
@@ -60,9 +60,9 @@ function inscrire_panier()
     echo '<ul id="panier">';
 
 
-    if (isset($_SESSION['user_id'])) {
+    if (isset($_SESSION['user_id']) && array_key_exists('page', $_GET)) {
         foreach (read_txt()[$_SESSION['user_id']]['cours_choisi'] as $name => $prix) {
-            echo "<li>$name $prix</li><a href='?action=remove&&name=$name'><img src='images/button_x.png' alt='x'/></a>";
+            echo "<li>$name $prix</li><a href='?action=remove&&name=$name&&page={$_GET['page']}'><img src='images/button_x.png' alt='x'/></a>";
         }
     } elseif (array_key_exists('page', $_GET)) {
         foreach ($_SESSION['cours_choisi'] as $name => $prix) {

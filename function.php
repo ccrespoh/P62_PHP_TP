@@ -1,4 +1,7 @@
 <?php
+
+require_once 'data.php';
+
 /**
  * @param $cata : nom de CATALOG qu'on veut
  * @param $tb_complet :  Nom de array dans data.php, soit $data
@@ -42,28 +45,22 @@ function afficher_article($cata, $tb_cata)
     echo '</div>';
 }
 
-/**
- *    creer la partie d'inscription, de login, et de panier
+
+/**  creer la partie d'inscription, de login, et de panier
  */
 function inscrire_panier()
 {
-
-    //echo "<nav><a href='?page=login' onclick='afficher_login();'><li>Se connecter</li></a><a href='inscription.php'><li>Créer un compte</li></a></nav><br/><br/>";
-
-   /* if (array_key_exists('action', $_GET) && ($_GET['action'] == 'add')) {
-        $_SESSION['cours_choisi'][$_GET['name']] = $_GET['prix'];
-      //  header('Location:' . $_SERVER['PHP_SELF']."?page={$_GET['page']}");
-
-    }
-    if (array_key_exists('action', $_GET) && ($_GET['action'] == 'remove')) {
-        unset($_SESSION['cours_choisi'][$_GET['name']]);  // utiliser 'key' unique (soit nom de cours) pour ne pas repeter
-
-    }*/
     echo '<aside>';
     echo '<h3>Panier</h3>';
     echo '<ul id="panier">';
 
-    if (array_key_exists('page', $_GET)) {
+
+    if (isset($_SESSION['user_id'])) {
+        foreach (read_txt()[$_SESSION['user_id']]['cours_choisi'] as $name => $prix) {
+            echo "<li>$name $prix</li><a href='?action=remove&&name=$name'><img src='images/button_x.png' alt='x'/></a>";
+        }
+    }
+    elseif (array_key_exists('page', $_GET)) {
         foreach ($_SESSION['cours_choisi'] as $name => $prix) {
             echo "<li>$name $prix</li><a href='?action=remove&&name=$name&&page={$_GET['page']}'><img src='images/button_x.png' alt='x'/></a>";
         }
@@ -73,12 +70,13 @@ function inscrire_panier()
         }
     }
     echo '</ul>';
-    $sum=0;
+
+    $sum = 0;
     foreach ($_SESSION['cours_choisi'] as $name => $prix) {
-        $sum=$prix+$sum;
+        $sum = $prix + $sum;
     }
 
-    echo '<h6>','Prix Total='.$prix .'</h6>';
+    echo '<h6>', 'Prix Total=', $sum, '</h6>';
     echo '<input type="button" name="checkout" value="checkout" />';
     echo '</aside>';
 }
@@ -112,7 +110,7 @@ function read_txt()
  */
 function demander_info_client($username)
 {
-    $tb=array();
+    $tb = array();
     foreach (read_txt() as $val) {
         if ($username == $val['username']) {
             $tb = $val;
@@ -120,4 +118,22 @@ function demander_info_client($username)
         }
     }
     return $tb;
+}
+
+
+/**  juger si username et password dans ( $_POST ) correspondent a base de donnee
+* @param $username
+ * @param $password
+ * @return bool|int|string:   Si oui, renvoyer indice de array. Si non, renvoyer boolean false.
+ */
+function username_password_correct($username, $password)
+{
+    $id = false;
+    foreach (read_txt() as $index=>$val) {
+        if (($username == $val['username'])&&($val['password'] == $password)) {
+            $id = $index;
+            break;
+        }
+    }
+    return $id;
 }

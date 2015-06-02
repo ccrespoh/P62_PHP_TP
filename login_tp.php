@@ -1,12 +1,5 @@
-
 <?php
-define('NAME', 'admin');
-define('PASSWORD', '123');
-
-$name_ok = array_key_exists('name', $_POST) && ($_POST['name'] == NAME);
-$password_ok = array_key_exists('password', $_POST) && ($_POST['password'] == PASSWORD);
-$cookie_exist = array_key_exists('status', $_COOKIE) && ($_COOKIE['status'] == 'login');
-$logoff_clique = array_key_exists('logoff_btn', $_POST) && ($_POST['logoff_btn'] == 'Log off');
+require_once 'function.php';
 
 function afficher_login()
 {
@@ -19,36 +12,42 @@ function afficher_login()
     echo '<input type = "submit" value = "Se connecter" name="login_btn"/>';
     echo '<br/>';
     echo '</form ><br/>';
-    echo '<form action = "inscription.php" method = "post" name="login_btn">';
-    echo '<input type = "submit" value = "Créer un compte" name="login_btn" />';
+    echo '<form action = "inscription.php" method = "post" name="inscription_form">';
+    echo '<input type = "submit" value = "Créer un compte" name="inscription_btn" />';
     echo '</form ><br/>';
 }
 
-function afficher_logoff()
+function afficher_logoff($id)
 {
-	echo  NAME;
     echo '<form action = "#" method = "post" name="logoff_form">';
     echo '<input type = "submit" value = "Log off" name="logoff_btn">';
     echo '</form >';
+    echo '<h3 class="red_bold">Bonjour</h3><h3 class="red_bold">';
+    echo read_txt()[$id]['prenom'] .' '. read_txt()[$id]['nom'].'</h3>';
 }
 
-?>
 
-    <?php
-    echo '<div id="identification">';
-    if ($logoff_clique) {
-        setcookie('status', null);
-        afficher_login();
-    } elseif ($name_ok && $password_ok) {
-        setcookie('status', 'login',time()+3600*24);
-        afficher_logoff();
-    } elseif ($cookie_exist) {
-        afficher_logoff();
-    } elseif (array_key_exists('name', $_POST) || array_key_exists('password', $_POST)) {
-        afficher_login();
-        echo '<h3>User name or password incorrect !</h3>';
-    } else {
-        afficher_login();
-    }
-    echo '</div>';
-    ?>
+echo '<div id="identification">';
+
+if (array_key_exists('logoff_btn', $_POST)) {
+    $_SESSION['user_id']=null;
+    $_SESSION['cours_choisi']=array();
+    //session_destroy();
+    afficher_login();
+} elseif (array_key_exists('name', $_POST) && username_password_correct($_POST['name'], $_POST['password'])) {
+    $user_id = username_password_correct($_POST['name'], $_POST['password']);
+    afficher_logoff($user_id);
+    $_SESSION['user_id'] = $user_id;
+} elseif (isset($_SESSION['user_id'])) {
+    afficher_logoff($_SESSION['user_id']);
+} elseif
+(array_key_exists('name', $_POST)) {
+    afficher_login();
+    echo '<p class="red_bold">User name or password incorrect !</p>';
+} else {
+    afficher_login();
+}
+echo '</div>';
+
+/*var_dump($_SESSION['user_id']);
+var_dump(isset($_SESSION['user_id']));*/

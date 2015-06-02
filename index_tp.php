@@ -1,21 +1,28 @@
 <?php
+require_once 'data.php';
+require_once 'function.php';
+
+
 session_start();
+
 if (!array_key_exists('cours_choisi', $_SESSION)) {
-    $_SESSION = array(
-        'cours_choisi' => array(),
-    );
+    $_SESSION['cours_choisi'] = array();
 }
 
 if (array_key_exists('action', $_GET) && ($_GET['action'] == 'add')) {
-    $_SESSION['cours_choisi'][$_GET['name']] = $_GET['prix'];
-    //  header('Location:' . $_SERVER['PHP_SELF']."?page={$_GET['page']}");
+    if (array_key_exists('user_id', $_SESSION)) {
+        $_SESSION['cours_choisi'][$_GET['name']] = $_GET['prix'];
 
+    } else {
+        $_SESSION['cours_choisi'][$_GET['name']] = $_GET['prix'];
+    }
 }
 if (array_key_exists('action', $_GET) && ($_GET['action'] == 'remove')) {
     unset($_SESSION['cours_choisi'][$_GET['name']]);  // utiliser 'key' unique (soit nom de cours) pour ne pas repeter
 
 }
 
+var_dump($_SESSION);
 
 ?>
 

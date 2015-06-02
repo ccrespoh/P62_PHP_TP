@@ -1,10 +1,5 @@
-
 <?php
-
-$name_ok = array_key_exists('name', $_POST) && ($_POST['name'] == 'admin');
-$password_ok = array_key_exists('password', $_POST) && ($_POST['password'] == 123);
-$cookie_exist = array_key_exists('status', $_COOKIE) && ($_COOKIE['status'] == 'login');
-$logoff_clique = array_key_exists('logoff_btn', $_POST) && ($_POST['logoff_btn'] == 'Log off');
+require_once 'function.php';
 
 function afficher_login()
 {
@@ -24,29 +19,30 @@ function afficher_login()
 
 function afficher_logoff()
 {
-	echo  'Bonjour '.$_POST['name'];
     echo '<form action = "#" method = "post" name="logoff_form">';
     echo '<input type = "submit" value = "Log off" name="logoff_btn">';
     echo '</form >';
+    echo '<h2 class="red_bold">Bonjour</h2><h2 class="red_bold">';
+    echo array_key_exists('username', $_SESSION)? $_SESSION['username'] . '</h2>':$_POST['name'].'</h2>';
 }
 
-?>
 
-    <?php
-    echo '<div id="identification">';
-    if ($logoff_clique) {
-        setcookie('status', null);
-        afficher_login();
-    } elseif ($name_ok && $password_ok) {
-        setcookie('status', 'login',time()+3600*24);
-        afficher_logoff();
-    } elseif ($cookie_exist) {
-        afficher_logoff();
-    } elseif (array_key_exists('name', $_POST) || array_key_exists('password', $_POST)) {
-        afficher_login();
-        echo '<p>User name or password incorrect !</p>';
-    } else {
-        afficher_login();
-    }
-    echo '</div>';
-    ?>
+echo '<div id="identification">';
+
+if (array_key_exists('logoff_btn', $_POST)) {
+    session_destroy();
+    afficher_login();
+} elseif (array_key_exists('name', $_POST) && username_password_correct($_POST['name'], $_POST['password'])) {
+    afficher_logoff();
+    $_SESSION['username'] = $_POST['name'];
+} elseif (array_key_exists('username', $_SESSION)){
+    afficher_logoff();
+} elseif
+(array_key_exists('name', $_POST)) {
+    afficher_login();
+    echo '<p class="red_bold">User name or password incorrect !</p>';
+} else {
+    afficher_login();
+}
+echo '</div>';
+

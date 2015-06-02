@@ -1,7 +1,5 @@
 <?php
 
-require_once 'data.php';
-
 /**
  * @param $cata : nom de CATALOG qu'on veut
  * @param $tb_complet :  Nom de array dans data.php, soit $data
@@ -51,7 +49,7 @@ function afficher_article($cata, $tb_cata)
 }
 
 
-/**  creer la partie d'inscription, de login, et de panier
+/**  Afficher le panier
  */
 function inscrire_panier()
 {
@@ -59,22 +57,27 @@ function inscrire_panier()
     echo '<h3>Panier</h3>';
     echo '<ul id="panier">';
 
-
-    if (isset($_SESSION['user_id']) && array_key_exists('page', $_GET)) {
+    /**
+     *  Afficher cours choisis dans le panier
+     */
+    if (isset($_SESSION['user_id']) && array_key_exists('page', $_GET)) {   // Si est loged-in ( $_SESSION['user_id'] est declaré)
         foreach (read_txt()[$_SESSION['user_id']]['cours_choisi'] as $name => $prix) {
             echo "<li>$name $prix</li><a href='?action=remove&&name=$name&&page={$_GET['page']}'><img src='images/button_x.png' alt='x'/></a>";
         }
-    } elseif (array_key_exists('page', $_GET)) {
+    } elseif (array_key_exists('page', $_GET)) {   // Si n'est pas loged-in mais il y a une requete de GET (Catalog spécifié)
         foreach ($_SESSION['cours_choisi'] as $name => $prix) {
             echo "<li>$name $prix</li><a href='?action=remove&&name=$name&&page={$_GET['page']}'><img src='images/button_x.png' alt='x'/></a>";
         }
-    } else {
+    } else {   // Si n'est pas loged-in mais il y a une requete de GET ( Sans Catalog spécifié)
         foreach ($_SESSION['cours_choisi'] as $name => $prix) {
             echo "<li>$name $prix</li><a href='?action=remove&&name=$name'><img src='images/button_x.png' alt='x'/></a>";
         }
     }
     echo '</ul>';
 
+    /**
+     *  Calculer prix total
+     */
     $sum = 0;
     foreach ($_SESSION['cours_choisi'] as $name => $prix) {
         $sum = $prix + $sum;
@@ -104,23 +107,6 @@ function write_txt($tb)    // 此处 用 file_put_contents 更方便
 function read_txt()
 {
     $tb = json_decode(file_get_contents("client.txt"), true);  // 此处的true用于强制转换成PHP格式的array
-    return $tb;
-}
-
-
-/**       Trouver informations d'un client dans 'client.txt', et former un array
- * @param $username : chercher par username
- * @return mixed:  return un array de ce client
- */
-function demander_info_client($username)
-{
-    $tb = array();
-    foreach (read_txt() as $val) {
-        if ($username == $val['username']) {
-            $tb = $val;
-            break;
-        }
-    }
     return $tb;
 }
 

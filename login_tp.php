@@ -1,6 +1,8 @@
 <?php
-require_once 'function.php';
 
+/**
+ * Form de log in
+ */
 function afficher_login()
 {
     echo '<form action = "#" method = "post" name="login_form">';
@@ -17,21 +19,27 @@ function afficher_login()
     echo '</form ><br/>';
 }
 
+/**  Form de log off
+ * @param $id:   user_id de client, pour trouver son nom et prenom dans base donnee, et les afficher
+ */
 function afficher_logoff($id)
 {
     echo '<form action = "#" method = "post" name="logoff_form">';
     echo '<input type = "submit" value = "Log off" name="logoff_btn">';
     echo '</form >';
     echo '<h3 class="red_bold">Bonjour</h3><h3 class="red_bold">';
-    echo read_txt()[$id]['prenom'] .' '. read_txt()[$id]['nom'].'</h3>';
+    echo read_txt()[$id]['prenom'] . ' ' . read_txt()[$id]['nom'] . '</h3>';
 }
 
 
+/**
+ *  Juger s'il faut afficher formulaire de LOG-IN ou LOG-OFF
+ */
 echo '<div id="identification">';
 
 if (array_key_exists('logoff_btn', $_POST)) {
-    $_SESSION['user_id']=null;   // utiliser 'null' pour vider, ailleure on utiliser isset au lieu de array_key_exist
-    $_SESSION['cours_choisi']=array();   //utiliser array() pour vider, parce que 'null' cause probleme ailleure
+    $_SESSION['user_id'] = null;   // utiliser 'null' pour vider, ailleure on utiliser isset au lieu de array_key_exist
+    $_SESSION['cours_choisi'] = array();   //utiliser array() pour vider, parce que 'null' cause probleme ailleure
     //session_destroy();
     afficher_login();
 } elseif (array_key_exists('name', $_POST) && username_password_correct($_POST['name'], $_POST['password'])) {
@@ -47,7 +55,5 @@ if (array_key_exists('logoff_btn', $_POST)) {
 } else {
     afficher_login();
 }
-echo '</div>';
 
-/*var_dump($_SESSION['user_id']);
-var_dump(isset($_SESSION['user_id']));*/
+echo '</div>';

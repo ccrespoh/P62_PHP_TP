@@ -12,7 +12,7 @@ for ($i = 1; $i <= 55; $i++) {
 }*/
 //var_export($data);
 
-$info_client = array(
+/*$info_client = array(
     1 => array(
         'username' => 'admin',
         'password' => '123',
@@ -39,7 +39,7 @@ $info_client = array(
             'hadoop' => 84,
             'linux' => 84,),
     ),
-);
+);*/
 
 $data = array(
     1 => array(

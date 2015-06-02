@@ -87,7 +87,7 @@ function inscrire_panier()
 
 
 /**
- *    Mettre array dans fichier txt
+ *    Sauvegarder array dans fichier txt
  * @param $tb :   Array des clients
  */
 function write_txt($tb)    // 此处 用 file_put_contents 更方便

@@ -1,4 +1,7 @@
 <?php
+
+require_once 'data.php';
+
 /**
  * @param $cata : nom de CATALOG qu'on veut
  * @param $tb_complet :  Nom de array dans data.php, soit $data
@@ -19,9 +22,8 @@ function demander_data($cata, $tb_complet)
 /**
  * @param $cata :    nom de CATALOG qu'on veut
  * @param $tb_cata :     array de data qu'on a extraire de $data
- * @param $tb :  utiliser $tb_info pour choisir si c'est des infos de base donnee ou $_SESION
  */
-function afficher_article($cata, $tb_cata, $tb)
+function afficher_article($cata, $tb_cata)
 {
     echo '<div class="article">';
     echo $cata == 'cloud' ? '<h2>Cours de Cloud Computing</h2>' : "<h2>Cours de $cata</h2>";
@@ -37,7 +39,7 @@ function afficher_article($cata, $tb_cata, $tb)
         echo '</tr>';
         echo '</table>';
         // mise de '?page=$cata' pour s'adapter au 'switch' dans catalog.php
-        echo array_key_exists($val['name'], $tb['cours_choisi']) ? "<a class='retirer' href='?page=$cata&&action=remove&&name={$val['name']}&&prix={$val['prix']}'>Retirer</a>" : "<a href='?page=$cata&&action=add&&name={$val['name']}&&prix={$val['prix']}'>Participer</a>";
+        echo array_key_exists($val['name'], $_SESSION['cours_choisi']) ? "<a class='retirer' href='?page=$cata&&action=remove&&name={$val['name']}&&prix={$val['prix']}'>Retirer</a>" : "<a href='?page=$cata&&action=add&&name={$val['name']}&&prix={$val['prix']}'>Participer</a>";
         echo '</div>';
     }
     echo '</div>';
@@ -45,9 +47,8 @@ function afficher_article($cata, $tb_cata, $tb)
 
 
 /**  creer la partie d'inscription, de login, et de panier
- * @param $tb : utiliser $tb_info pour choisir si c'est des infos de base donnee ou $_SESION
  */
-function inscrire_panier($tb)
+function inscrire_panier()
 {
 
     echo '<aside>';
@@ -55,21 +56,22 @@ function inscrire_panier($tb)
     echo '<ul id="panier">';
 
     if (array_key_exists('page', $_GET)) {
-        foreach ($tb['cours_choisi'] as $name => $prix) {
+        foreach ($_SESSION['cours_choisi'] as $name => $prix) {
             echo "<li>$name $prix</li><a href='?action=remove&&name=$name&&page={$_GET['page']}'><img src='images/button_x.png' alt='x'/></a>";
         }
     } else {
-        foreach ($tb['cours_choisi'] as $name => $prix) {
+        foreach ($_SESSION['cours_choisi'] as $name => $prix) {
             echo "<li>$name $prix</li><a href='?action=remove&&name=$name'><img src='images/button_x.png' alt='x'/></a>";
         }
     }
     echo '</ul>';
-    $sum=0;
+
+    $sum = 0;
     foreach ($_SESSION['cours_choisi'] as $name => $prix) {
-        $sum=$prix+$sum;
+        $sum = $prix + $sum;
     }
 
-    echo '<h6>','Prix Total='.$prix .'</h6>';
+    echo '<h6>', 'Prix Total=', $sum, '</h6>';
     echo '<input type="button" name="checkout" value="checkout" />';
     echo '</aside>';
 }
@@ -111,4 +113,17 @@ function demander_info_client($username)
         }
     }
     return $tb;
+}
+
+
+function username_password_correct($username, $password)
+{
+    $correct = false;
+    foreach (read_txt() as $val) {
+        if (($username == $val['username'])&&($val['password'] == $password)) {
+            $correct = true;
+            break;
+        }
+    }
+    return $correct;
 }

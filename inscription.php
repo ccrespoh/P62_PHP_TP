@@ -17,12 +17,12 @@ var_dump($_POST);
     <form action="attestation.php" id="formulaire" method="post">
         <fieldset>
             <legend>Créer un compte</legend>
-            <label class="left" for="user_name">Nom d'utilisateur : </label><input id="user_name" type="text"
+            <label class="left" for="user_name">Nom d'utilisateur : </label><input name="nom" id="user_name" type="text"
                                                                                     pattern="[a-zA-Z0-9]{4,8}"
                                                                                     placeholder="Entrez 4 à 8 caractàres"
                                                                                     title="chaîne de caractère de 4 à 8 caractàre"
                                                                                     required="required">
-            <label class="left" for="password">Mot de passe : </label><input id="password"
+            <label class="left" for="password">Mot de passe : </label><input name="password" id="password"
                                                                               placeholder="Avec chiffre et lettre"
                                                                               title="4 à 8 caractàre" type="password"
                                                                               required="required">
@@ -30,7 +30,7 @@ var_dump($_POST);
                                                                            placeholder="Confirmer mot de passe"
                                                                            title="4 à 8 caractàre" type="password"
                                                                            required="required">
-            <label class="left" for="email">Adresse courriel : </label><input id="email" type="email"
+            <label class="left" for="email">Adresse courriel : </label><input name="email" id="email" type="email"
                                                                               required="required">
             <label class="left" for="date">Date de naissance : </label><input id="date" type="date" required="required">
 

@@ -1,9 +1,7 @@
 <?php
 require_once 'data.php';
-require_once 'function.php';
-start_db();
-
-
+require 'function.php';
+$conn;
 session_start();
 
 if (!array_key_exists('cours_choisi', $_SESSION)) {

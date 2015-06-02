@@ -36,7 +36,7 @@ function demander_data($cata, $tb_complet)
  */
 function afficher_article($cata, $tb_cata)
 {
-    global $queryString;
+    global $resultat;
     echo '<div class="article">';
     echo $cata == 'cloud' ? '<h2>Cours de Cloud Computing</h2>' : "<h2>Cours de $cata</h2>";
     foreach ($tb_cata as $val) {
@@ -51,7 +51,7 @@ function afficher_article($cata, $tb_cata)
         echo '</tr>';
         echo '</table>';
         if (isset($_SESSION['user_id'])) {
-            $array_a_choisi = $queryString[$_SESSION['user_id']]['cours_choisi'];
+            $array_a_choisi = $resultat[$_SESSION['user_id']]['cours_choisi'];
         }else{
             $array_a_choisi = $_SESSION['cours_choisi'];
         }
@@ -71,14 +71,14 @@ function remove_all(){
  */
 function inscrire_panier()
 {
-    global $queryString;
+    global $consultation;
     echo '<aside>';
     echo '<h3>Panier</h3>';
     echo '<ul id="panier">';
 
 
     if (isset($_SESSION['user_id'])) {
-        foreach ($queryString[$_SESSION['user_id']]['cours_choisi'] as $name => $prix) {
+        foreach ($consultation[$_SESSION['user_id']]['cours_choisi'] as $name => $prix) {
             echo "<li>$name $prix</li><a href='?action=remove&&name=$name'><img src='images/button_x.png' alt='x'/></a>";
         }
     } elseif (array_key_exists('page', $_GET)) {
@@ -103,14 +103,13 @@ function inscrire_panier()
 }
 ?>
 <?php
-include_once 'login_tp.php';
+include 'login_tp.php';
 var_dump($_POST);
 $name=array_key_exists('nom',$_POST) ? $_POST['nom'] : null;
 $password=array_key_exists('password',$_POST) ? $_POST['password'] : null;
 
 function user_exists($username, $password) {
     $conn = start_db();
-    include_once 'login_tp.php';
     var_dump($_POST);
     $name=array_key_exists('nom',$_POST) ? $_POST['nom'] : null;
     $password=array_key_exists('password',$_POST) ? $_POST['password'] : null;

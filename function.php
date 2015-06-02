@@ -50,12 +50,17 @@ function afficher_article($cata, $tb_cata)
  */
 function inscrire_panier()
 {
-
     echo '<aside>';
     echo '<h3>Panier</h3>';
     echo '<ul id="panier">';
 
-    if (array_key_exists('page', $_GET)) {
+
+    if (isset($_SESSION['user_id'])) {
+        foreach (read_txt()[$_SESSION['user_id']]['cours_choisi'] as $name => $prix) {
+            echo "<li>$name $prix</li><a href='?action=remove&&name=$name'><img src='images/button_x.png' alt='x'/></a>";
+        }
+    }
+    elseif (array_key_exists('page', $_GET)) {
         foreach ($_SESSION['cours_choisi'] as $name => $prix) {
             echo "<li>$name $prix</li><a href='?action=remove&&name=$name&&page={$_GET['page']}'><img src='images/button_x.png' alt='x'/></a>";
         }
@@ -116,14 +121,19 @@ function demander_info_client($username)
 }
 
 
+/**  juger si username et password dans ( $_POST ) correspondent a base de donnee
+* @param $username
+ * @param $password
+ * @return bool|int|string:   Si oui, renvoyer indice de array. Si non, renvoyer boolean false.
+ */
 function username_password_correct($username, $password)
 {
-    $correct = false;
-    foreach (read_txt() as $val) {
+    $id = false;
+    foreach (read_txt() as $index=>$val) {
         if (($username == $val['username'])&&($val['password'] == $password)) {
-            $correct = true;
+            $id = $index;
             break;
         }
     }
-    return $correct;
+    return $id;
 }

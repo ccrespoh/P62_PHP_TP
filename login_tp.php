@@ -17,26 +17,29 @@ function afficher_login()
     echo '</form ><br/>';
 }
 
-function afficher_logoff()
+function afficher_logoff($id)
 {
     echo '<form action = "#" method = "post" name="logoff_form">';
     echo '<input type = "submit" value = "Log off" name="logoff_btn">';
     echo '</form >';
-    echo '<h2 class="red_bold">Bonjour</h2><h2 class="red_bold">';
-    echo array_key_exists('username', $_SESSION)? $_SESSION['username'] . '</h2>':$_POST['name'].'</h2>';
+    echo '<h3 class="red_bold">Bonjour</h3><h3 class="red_bold">';
+    echo read_txt()[$id]['prenom'] .' '. read_txt()[$id]['nom'].'</h3>';
 }
 
 
 echo '<div id="identification">';
 
 if (array_key_exists('logoff_btn', $_POST)) {
-    session_destroy();
+    $_SESSION['user_id']=null;
+    $_SESSION['cours_choisi']=array();
+    //session_destroy();
     afficher_login();
 } elseif (array_key_exists('name', $_POST) && username_password_correct($_POST['name'], $_POST['password'])) {
-    afficher_logoff();
-    $_SESSION['username'] = $_POST['name'];
-} elseif (array_key_exists('username', $_SESSION)){
-    afficher_logoff();
+    $user_id = username_password_correct($_POST['name'], $_POST['password']);
+    afficher_logoff($user_id);
+    $_SESSION['user_id'] = $user_id;
+} elseif (isset($_SESSION['user_id'])) {
+    afficher_logoff($_SESSION['user_id']);
 } elseif
 (array_key_exists('name', $_POST)) {
     afficher_login();
@@ -46,3 +49,5 @@ if (array_key_exists('logoff_btn', $_POST)) {
 }
 echo '</div>';
 
+/*var_dump($_SESSION['user_id']);
+var_dump(isset($_SESSION['user_id']));*/

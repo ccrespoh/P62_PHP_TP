@@ -103,7 +103,7 @@ function inscrire_panier()
 }
 ?>
 <?php
-include 'login_tp.php';
+
 var_dump($_POST);
 $name=array_key_exists('nom',$_POST) ? $_POST['nom'] : null;
 $password=array_key_exists('password',$_POST) ? $_POST['password'] : null;

@@ -67,24 +67,36 @@ aside{
 	/*display: block;*/
     background-color: rgba(184, 181, 193, 0.62);
 }
-aside>h3,h6{
+aside>h3{
     margin:5px 15px;
+    text-align: center;
 }
-#panier{
+/*#panier{*/
     /*border:1px dashed black;*/
     /*margin:5px 15px;*/
     /*margin-left:2px;*/
-}
-#panier li{
+/*}*/
+/*#panier li{
 	list-style: none;
 	display: inline-block;
 margin-bottom: 10px;
-}
+}*/
 #panier img{
     float:right;
     clear: right;
 }
+aside table{
+    margin-left: 20px;
+    border-collapse: collapse;
+}
+aside table th, aside table td{
+    width: 50px;
 
+}
+aside table th:nth-of-type(2),aside table th:nth-of-type(1){
+    background-color: #e4e4e4;
+    text-align: left;
+}
 #menu {
     text-align: center;
     width: 800px;

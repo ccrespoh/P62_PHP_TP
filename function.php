@@ -54,26 +54,28 @@ function afficher_article($cata, $tb_cata)
 function afficher_panier()
 {
     echo '<aside>';
-    echo '<h3>Panier</h3>';
-    echo '<ul id="panier">';
+    echo '<h3>Votre panier</h3>';
+    //echo '<ul id="panier">';
     global $tb_cours_merged;
     /**
      *  Afficher cours choisis dans le panier
      */
+    echo '<table>';
+    echo count($_SESSION['cours_choisi'])>0? '<tr><th>Cours</th><th>Prix</th><th></th></tr>':'';
     if ((isset($_SESSION['user_id']) || isset($substitut_de_SESSION_id)) && array_key_exists('page', $_GET)) {   // Si est loged-in ( $_SESSION['user_id'] est declaré)
         foreach ($tb_cours_merged as $name => $prix) {
-            echo "<li>$name $prix<a href='?action=remove&&name=$name&&page={$_GET['page']}'><img  src='images/button_x.png' alt='x'/></a></li>";
+            echo "<tr><td>$name</td><td> $prix</td><td><a href='?action=remove&&name=$name&&page={$_GET['page']}'><img  src='images/button_x.png' alt='x'/></a></td></tr>";
         }
     } elseif (array_key_exists('page', $_GET)) {   // Si n'est pas loged-in mais il y a une requete de GET (Catalog spécifié)
         foreach ($_SESSION['cours_choisi'] as $name => $prix) {
-            echo "<li>$name $prix<a href='?action=remove&&name=$name&&page={$_GET['page']}'><img  src='images/button_x.png' alt='x'/></a></li>";
+            echo "<tr><td>$name</td><td> $prix</td><td><a href='?action=remove&&name=$name&&page={$_GET['page']}'><img  src='images/button_x.png' alt='x'/></a></td></tr>";
         }
     } else {   // Si n'est pas loged-in mais il y a une requete de GET ( Sans Catalog spécifié)
         foreach ($_SESSION['cours_choisi'] as $name => $prix) {
-            echo "<li>$name $prix<a href='?action=remove&&name=$name'><img  src='images/button_x.png' alt='x'/></a></li>";
+            echo "<tr><td>$name</td><td> $prix</td><td><a href='?action=remove&&name=$name'><img  src='images/button_x.png' alt='x'/></a></td></tr>";
         }
     }
-    echo '</ul>';
+    echo '</table>';
 
     /**
      *  Calculer prix total
@@ -82,7 +84,7 @@ function afficher_panier()
     foreach ($_SESSION['cours_choisi'] as $name => $prix) {
         $sum = $prix + $sum;
     }
-
+  echo '<h3><span class="red_bold">',count($_SESSION['cours_choisi']),' ','</span>cours choisis</h3>';
     echo '<h3 >', 'Prix Total: <span class="red_bold">', $sum,' ', '</span></h3>';
     echo '<input type="button" name="checkout" value="checkout" />';
     echo '</aside>';

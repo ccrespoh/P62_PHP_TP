@@ -28,7 +28,7 @@ function afficher_logoff($id)
     echo '<input type = "submit" value = "Log off" name="logoff_btn">';
     echo '</form >';
     echo '<h3 class="red_bold">Bonjour</h3><h3 class="red_bold">';
-    echo read_txt()[$id]['prenom'] . ' ' . read_txt()[$id]['nom'] . '</h3>';
+    echo read_txt()[$id]['username'] . '</h3>';
 }
 
 

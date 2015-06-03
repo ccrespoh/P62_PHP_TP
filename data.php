@@ -1,4 +1,5 @@
 <?php
+require_once 'function.php';
 // Cette boucle a pour but de creer aleatoirement un array
 /*$data = array();
 for ($i = 1; $i <= 55; $i++) {
@@ -11,8 +12,8 @@ for ($i = 1; $i <= 55; $i++) {
     );
 }*/
 //var_export($data);
-
-/*$info_client = array(
+/*
+$info_client = array(
     1 => array(
         'username' => 'admin',
         'password' => '123',
@@ -40,6 +41,7 @@ for ($i = 1; $i <= 55; $i++) {
             'linux' => 84,),
     ),
 );*/
+//write_txt($info_client);
 
 $data = array(
     1 => array(

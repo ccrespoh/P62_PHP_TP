@@ -2,7 +2,6 @@
     require_once 'header.php';
     require_once 'function.php';
 	require_once 'data.php';
-var_dump($_POST);
     ?>
 <!DOCTYPE html>
 <html>
@@ -26,7 +25,7 @@ var_dump($_POST);
                                                                               placeholder="Avec chiffre et lettre"
                                                                               title="4 à 8 caractàre" type="password"
                                                                               required="required">
-            <label class="left" for="password2">Confirmer : </label><input id="password2"
+            <label class="left" for="password2">Confirmer : </label><input name="password2" id="password2"
                                                                            placeholder="Confirmer mot de passe"
                                                                            title="4 à 8 caractàre" type="password"
                                                                            required="required">

@@ -1,26 +1,13 @@
 <?php
-var_dump($_POST);
-$nom=array_key_exists('nom',$_POST) ? $_POST['nom'] : null;
-$password=array_key_exists('password',$_POST) ? $_POST['password'] : null;
-$email=array_key_exists('email',$_POST) ? $_POST['email'] : null;
+require_once 'function.php';
+require_once 'data.php';
+$tout_est_rempli = false;
+$tout_est_rempli = array_key_exists('nom', $_POST);
+$tout_est_rempli = array_key_exists('password', $_POST);
+$tout_est_rempli = array_key_exists('password2', $_POST);
 
 ?>
-<?php  //Connexion a la BD
-$connexion = new mysqli('localhost', 'root','', 'p62_project');
-if($connexion->connect_errno){
-    echo'Erreur de connexion';
-}
-$sql = "INSERT INTO users (`user_name`, `password`, `email`) VALUES ('$nom', '$password', '$email')";
 
-if ($connexion->query($sql) === TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $connexion->error;
-}
-
-$connexion->close();
-?>
-?>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -29,12 +16,38 @@ $connexion->close();
 </head>
 <body>
 <?php
-if (isset($nom) && isset($email) && isset($area)&& isset($course)){
-    echo "<h1>Reception d'Incription Employe</h1>";
-    echo "Le utilisateur $nom, avec l'email: $email, est inscript dans le cours $course, dans le domaine $area";
-}else{
-    echo "Donnees de formulaire invalidees";
+
+if ($tout_est_rempli) {
+    foreach (read_txt() as $index => $val) {
+        //var_dump($val['username']);
+        if ($_POST['nom'] == $val['username']) {
+            //var_dump($_POST['nom']);
+            //var_dump('dfdf',$val['username']);
+            echo "<h2>User existe deja !!!</h2>";
+            break;
+        }
+    }
 }
+
+
+if ($_POST['password'] != $_POST['password2']) {
+    echo "<h2>Mot de passe different !!!</h2>";
+    exit;
+};
+
+$nouveaux_info_clients = read_txt();
+
+$nouveaux_info_clients[] = array(
+    'username' => $_POST['nom'],
+    'password'=>$_POST['password'],
+    'cours_choisi'=>array(),
+);
+
+write_txt($nouveaux_info_clients);
+
+echo "<h2>Inscript reussi !!!</h2>";
+//echo '<a href="/P62_disque_C/P62_PHP_TP/index.php">Retourner a l\'accueil</a>';
+//var_dump($_SERVER['PHP_SELF']);
 
 ?>
 </body>

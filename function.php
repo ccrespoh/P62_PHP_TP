@@ -62,15 +62,15 @@ function afficher_panier()
      */
     if ((isset($_SESSION['user_id']) || isset($substitut_de_SESSION_id)) && array_key_exists('page', $_GET)) {   // Si est loged-in ( $_SESSION['user_id'] est declaré)
         foreach ($tb_cours_merged as $name => $prix) {
-            echo "<li>$name $prix</li><a href='?action=remove&&name=$name&&page={$_GET['page']}'><img src='images/button_x.png' alt='x'/></a>";
+            echo "<li>$name $prix</li><a href='?action=remove&&name=$name&&page={$_GET['page']}'><img  src='images/button_x.png' alt='x'/></a>";
         }
     } elseif (array_key_exists('page', $_GET)) {   // Si n'est pas loged-in mais il y a une requete de GET (Catalog spécifié)
         foreach ($_SESSION['cours_choisi'] as $name => $prix) {
-            echo "<li>$name $prix</li><a href='?action=remove&&name=$name&&page={$_GET['page']}'><img src='images/button_x.png' alt='x'/></a>";
+            echo "<li>$name $prix</li><a href='?action=remove&&name=$name&&page={$_GET['page']}'><img  src='images/button_x.png' alt='x'/></a>";
         }
     } else {   // Si n'est pas loged-in mais il y a une requete de GET ( Sans Catalog spécifié)
         foreach ($_SESSION['cours_choisi'] as $name => $prix) {
-            echo "<li>$name $prix</li><a href='?action=remove&&name=$name'><img src='images/button_x.png' alt='x'/></a>";
+            echo "<li>$name $prix</li><a href='?action=remove&&name=$name'><img  src='images/button_x.png' alt='x'/></a>";
         }
     }
     echo '</ul>';

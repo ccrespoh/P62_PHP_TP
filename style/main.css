@@ -77,10 +77,11 @@ aside>h3,h6{
 #panier li{
 	list-style: none;
 	display: inline-block;
-
+margin-bottom: 10px;
 }
 #panier img{
     float:right;
+    clear: right;
 }
 
 #menu {
@@ -183,3 +184,4 @@ footer {
     font-weight: bold;
     color: red;
 }
+

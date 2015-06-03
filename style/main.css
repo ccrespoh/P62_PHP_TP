@@ -53,7 +53,8 @@ nav li:hover{
 }
 #identification{
 /*float:left;*/
-	border: 1px solid black;
+	border: 1px solid #bbbbbb;
+    padding-left: 10px;
     /*width: 190px;*/
 }
 
@@ -70,9 +71,9 @@ aside>h3,h6{
     margin:5px 15px;
 }
 #panier{
-    border:1px dashed black;
-    margin:5px 15px;
-    padding:5px 10px;
+    /*border:1px dashed black;*/
+    /*margin:5px 15px;*/
+    /*margin-left:2px;*/
 }
 #panier li{
 	list-style: none;

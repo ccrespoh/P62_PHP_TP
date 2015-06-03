@@ -36,7 +36,7 @@ function afficher_article($cata, $tb_cata)
         echo "<th>{$val['name']}</th><th>{$val['heures']}</th><th>{$val['personnes']}</th><th>{$val['prix']} $</th>";
         echo '</tr>';
         echo '</table>';
-        if (isset($_SESSION['user_id'])) {
+        if (isset($_SESSION['user_id']) || isset($substitut_de_SESSION_id)) {
             $array_a_choisi = read_txt()[$_SESSION['user_id']]['cours_choisi'];
         } else {
             $array_a_choisi = $_SESSION['cours_choisi'];
@@ -51,17 +51,17 @@ function afficher_article($cata, $tb_cata)
 
 /**  Afficher le panier
  */
-function inscrire_panier()
+function afficher_panier()
 {
     echo '<aside>';
     echo '<h3>Panier</h3>';
     echo '<ul id="panier">';
-
+    global $tb_cours_merged;
     /**
      *  Afficher cours choisis dans le panier
      */
-    if (isset($_SESSION['user_id']) && array_key_exists('page', $_GET)) {   // Si est loged-in ( $_SESSION['user_id'] est declaré)
-        foreach (read_txt()[$_SESSION['user_id']]['cours_choisi'] as $name => $prix) {
+    if ((isset($_SESSION['user_id']) || isset($substitut_de_SESSION_id)) && array_key_exists('page', $_GET)) {   // Si est loged-in ( $_SESSION['user_id'] est declaré)
+        foreach ($tb_cours_merged as $name => $prix) {
             echo "<li>$name $prix</li><a href='?action=remove&&name=$name&&page={$_GET['page']}'><img src='images/button_x.png' alt='x'/></a>";
         }
     } elseif (array_key_exists('page', $_GET)) {   // Si n'est pas loged-in mais il y a une requete de GET (Catalog spécifié)

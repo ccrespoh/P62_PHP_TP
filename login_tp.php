@@ -20,7 +20,7 @@ function afficher_login()
 }
 
 /**  Form de log off
- * @param $id:   user_id de client, pour trouver son nom et prenom dans base donnee, et les afficher
+ * @param $id :   user_id de client, pour trouver son nom et prenom dans base donnee, et les afficher
  */
 function afficher_logoff($id)
 {
@@ -35,25 +35,29 @@ function afficher_logoff($id)
 /**
  *  Juger s'il faut afficher formulaire de LOG-IN ou LOG-OFF
  */
-echo '<div id="identification">';
-
-if (array_key_exists('logoff_btn', $_POST)) {
-    $_SESSION['user_id'] = null;   // utiliser 'null' pour vider, ailleure on utiliser isset au lieu de array_key_exist
-    $_SESSION['cours_choisi'] = array();   //utiliser array() pour vider, parce que 'null' cause probleme ailleure
-    //session_destroy();
-    afficher_login();
-} elseif (array_key_exists('name', $_POST) && username_password_correct($_POST['name'], $_POST['password'])) {
-    $user_id = username_password_correct($_POST['name'], $_POST['password']);
-    afficher_logoff($user_id);
-    $_SESSION['user_id'] = $user_id;
-} elseif (isset($_SESSION['user_id'])) {
-    afficher_logoff($_SESSION['user_id']);
-} elseif
-(array_key_exists('name', $_POST)) {
-    afficher_login();
-    echo '<p class="red_bold">User name or password incorrect !</p>';
-} else {
-    afficher_login();
+function affichier_formulaire_login_logout()
+{
+    global $substitut_de_SESSION_id;
+    echo '<div id="identification">';
+    if (array_key_exists('logoff_btn', $_POST)) {
+        $substitut_de_SESSION_id = null;    // utiliser ce variable qui réagit plus vite que $_SESSION
+        $_SESSION['user_id'] = null;   // utiliser 'null' pour vider, ailleure on utiliser isset au lieu de array_key_exist
+        $_SESSION['cours_choisi'] = array();   //utiliser array() pour vider, parce que 'null' cause probleme ailleure
+        session_destroy();
+        afficher_login();
+    } elseif (array_key_exists('name', $_POST) && username_password_correct($_POST['name'], $_POST['password'])) {
+        $user_id = username_password_correct($_POST['name'], $_POST['password']);
+        afficher_logoff($user_id);
+        $_SESSION['user_id'] = $user_id;
+        $substitut_de_SESSION_id = $user_id;
+    } elseif (isset($_SESSION['user_id'])) {
+        afficher_logoff($_SESSION['user_id']);
+    } elseif
+    (array_key_exists('name', $_POST)) {
+        afficher_login();
+        echo '<p class="red_bold">User name or password incorrect !</p>';
+    } else {
+        afficher_login();
+    }
+    echo '</div>';
 }
-
-echo '</div>';

@@ -2,7 +2,7 @@
     require_once 'header.php';
     require_once 'function.php';
 	require_once 'data.php';
-var_dump($_POST);
+//var_dump($_POST);
     ?>
 <!DOCTYPE html>
 <html>

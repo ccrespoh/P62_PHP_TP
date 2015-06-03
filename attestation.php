@@ -1,5 +1,5 @@
 <?php
-var_dump($_POST);
+//var_dump($_POST);
 $nom=array_key_exists('nom',$_POST) ? $_POST['nom'] : null;
 $password=array_key_exists('password',$_POST) ? $_POST['password'] : null;
 $email=array_key_exists('email',$_POST) ? $_POST['email'] : null;
@@ -30,7 +30,7 @@ $connexion->close();
 <?php
 if (isset($nom) && isset($email)){
     echo "<h1>Reception d'Incription Employe</h1>";
-    echo "Le utilisateur $nom, avec l'email: $email, est inscript dans le cours";
+    echo "Vous avez inscrive et son nom de utilisateur cest: $nom, et votre l'email: $email";
 }else{
     echo "Donnees de formulaire invalidees";
 }

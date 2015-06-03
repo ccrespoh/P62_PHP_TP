@@ -56,16 +56,12 @@ function afficher_article($cata, $tb_cata)
             $array_a_choisi = $_SESSION['cours_choisi'];
         }
         // mise de '?page=$cata' pour s'adapter au 'switch' dans catalog.php
-        echo array_key_exists($val['name'], $array_a_choisi) ? "<a class='retirer' href='?page=$cata&&action=remove&&name={$val['name']}&&prix={$val['prix']}'>Retirer</a>" : "<a href='?page=$cata&&action=add&&name={$val['name']}&&prix={$val['prix']}'>Participer</a>";
+        echo array_key_exists($val['name'], $_SESSION['cours_choisi']) ? "<a class='retirer' href='?page=$cata&&action=remove&&name={$val['name']}&&prix={$val['prix']}'>Retirer</a>" : "<a href='?page=$cata&&action=add&&name={$val['name']}&&prix={$val['prix']}'>Participer</a>";
         echo '</div>';
     }
     echo '</div>';
 }
-function remove_all(){
-    var_dump('hi');
-  $_SESSION['cours_choisi']=0;
 
-}
 
 /**  creer la partie d'inscription, de login, et de panier
  */
@@ -78,7 +74,7 @@ function inscrire_panier()
 
 
     if (isset($_SESSION['user_id'])) {
-        foreach ($consultation[$_SESSION['user_id']]['cours_choisi'] as $name => $prix) {
+        foreach ($_SESSION['cours_choisi'] as $name => $prix) {
             echo "<li>$name $prix</li><a href='?action=remove&&name=$name'><img src='images/button_x.png' alt='x'/></a>";
         }
     } elseif (array_key_exists('page', $_GET)) {
@@ -104,75 +100,19 @@ function inscrire_panier()
 ?>
 <?php
 
-var_dump($_POST);
+//var_dump($_POST);
 $name=array_key_exists('nom',$_POST) ? $_POST['nom'] : null;
 $password=array_key_exists('password',$_POST) ? $_POST['password'] : null;
 
 function user_exists($username, $password) {
     $conn = start_db();
-    var_dump($_POST);
+    //var_dump($_POST);
     $name=array_key_exists('nom',$_POST) ? $_POST['nom'] : null;
     $password=array_key_exists('password',$_POST) ? $_POST['password'] : null;
     $consultation = "SELECT * FROM users WHERE `user_name`='$username' AND `password`='$password'";
-    var_dump($consultation);
+    //var_dump($consultation);
     $resultat = $conn->query($consultation);
-    var_dump( $resultat) ;
+   // var_dump( $resultat) ;
     return ($resultat->num_rows > 0); // Userexists
 }
 
-//
-///**
-// *    Mettre array dans fichier txt
-// * @param $tb :   Array des clients
-// */
-//function write_txt($tb)
-//{
-//    $tb_client = fopen("client.txt", "w") or die("Unable to open file!");
-//    fwrite($tb_client, json_encode($tb));
-//    fclose($tb_client);
-//}
-//
-//
-///**   Lire array dans fichier txt
-// * @return mixed:  Sorti de array
-// */
-//function read_txt()
-//{
-//    $tb = json_decode(file_get_contents("client.txt"), true);  // 此处的true用于强制转换成PHP格式的array
-//    return $tb;
-//}
-//
-//
-///**       Trouver informations d'un client dans 'client.txt', et former un array
-// * @param $username : chercher par username
-// * @return mixed:  return un array de ce client
-// */
-//function demander_info_client($username)
-//{
-//    $tb = array();
-//    foreach (read_txt() as $val) {
-//        if ($username == $val['username']) {
-//            $tb = $val;
-//            break;
-//        }
-//    }
-//    return $tb;
-//}
-//
-//
-///**  juger si username et password dans ( $_POST ) correspondent a base de donnee
-// * @param $username
-// * @param $password
-// * @return bool|int|string:   Si oui, renvoyer indice de array. Si non, renvoyer boolean false.
-// */
-//function username_password_correct($username, $password)
-//{
-//    $id = false;
-//    foreach (read_txt() as $index => $val) {
-//        if (($username == $val['username']) && ($val['password'] == $password)) {
-//            $id = $index;
-//            break;
-//        }
-//    }
-//    return $id;
-//}

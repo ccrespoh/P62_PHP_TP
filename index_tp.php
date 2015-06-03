@@ -21,7 +21,7 @@ if (array_key_exists('action', $_GET) && ($_GET['action'] == 'remove')) {
 
 }
 
-var_dump($_SESSION);
+//var_dump($_SESSION);
 
 ?>
 

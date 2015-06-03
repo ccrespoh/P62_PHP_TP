@@ -25,7 +25,7 @@ function afficher_logoff($id)
     echo '<form action = "#" method = "post" name="logoff_form">';
     echo '<input type = "submit" value = "Log off" name="logoff_btn">';
     echo '</form >';
-    echo '<h3 class="red_bold">Bonjour</h3><h3 class="red_bold">';
+    echo '<h3 class="red_bold">Bonjour </h3><h3 class="red_bold">';
     echo $consultation[$id]['prenom'] .' '. $consultation[$id]['nom'].'</h3>';
 }
 

@@ -19,7 +19,7 @@ if (isset($_SESSION['user_id']) || isset($substitut_de_SESSION_id)) {   // Si es
 
 // Lors de cliquer 'Participer', choisir dans quel array ajouter le cours
 if (array_key_exists('action', $_GET) && ($_GET['action'] == 'add')) {
-    if (isset($_SESSION['user_id']) || isset($substitut_de_SESSION_id)) {   // Si est loged-in ( $_SESSION['user_id'] est declaré)
+    if (isset($_SESSION['user_id']) || isset($substitut_de_SESSION_id)) {   // Si est loged-in ( Si $_SESSION['user_id'] est declaré)
         $tb_cours_merged[$_GET['name']] = $_GET['prix'];   //  Array $tb_cours_merged est deja rempli par les codes en haut
         $_SESSION['cours_choisi'][$_GET['name']] = $_GET['prix'];     // Ajouter le cours dans $_SESSION
         $new_info_client[$_SESSION['user_id']]['cours_choisi'] = $tb_cours_merged;

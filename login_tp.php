@@ -39,7 +39,7 @@ function affichier_formulaire_login_logout()
 {
     global $substitut_de_SESSION_id;
     echo '<div id="identification">';
-    if (array_key_exists('logoff_btn', $_POST)) {
+    if (array_key_exists('logoff_btn', $_POST)) {       // Si on clique button 'logoff'
         $substitut_de_SESSION_id = null;    // utiliser ce variable qui réagit plus vite que $_SESSION
         $_SESSION['user_id'] = null;   // utiliser 'null' pour vider, ailleure on utiliser isset au lieu de array_key_exist
         $_SESSION['cours_choisi'] = array();   //utiliser array() pour vider, parce que 'null' cause probleme ailleure
@@ -50,9 +50,9 @@ function affichier_formulaire_login_logout()
         afficher_logoff($user_id);
         $_SESSION['user_id'] = $user_id;
         $substitut_de_SESSION_id = $user_id;
-    } elseif (isset($_SESSION['user_id'])) {
+    } elseif (isset($_SESSION['user_id'])) {     // Si deja loged in
         afficher_logoff($_SESSION['user_id']);
-    } elseif
+    } elseif         // le cas où mdp ou username incorrect
     (array_key_exists('name', $_POST)) {
         afficher_login();
         echo '<p class="red_bold">User name or password incorrect !</p>';

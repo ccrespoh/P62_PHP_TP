@@ -57,34 +57,69 @@ nav li:hover{
     padding-left: 10px;
     /*width: 190px;*/
 }
+#identification form:first-of-type input{
+    width: 150px;
+}
+#identification form input[type=submit]{
+    width: 120px;
+    padding: 3px 0;
+    border-radius: 6px;
+    font-weight: bold;
+}
+#checkout input{
+    width: 90px;
+    padding: 3px 0;
+    border-radius: 6px;
+    background-color: #ebebeb;
+    margin: 10px 0 10px 50px;
+    box-shadow: 2px 2px 5px #5f5f5f;
+    font-size: 0.9em;
+}
 
 aside{
-	border:1px solid black;
+	border:1px solid #ababab;
 	/*display:inline-block;*/
 	/*clear:left;*/
 	/*width:190px;*/
 	margin-top: 20px;
 	/*display: block;*/
-    background-color: rgba(67,66,76,0.62);
+    background-color: rgba(184, 181, 193, 0.62);
+    box-shadow: 3px 3px 5px #b3b3b3;
+    border-radius: 7px;
 }
-aside>h3,h6{
+aside>h3{
     margin:5px 15px;
+    text-align: center;
 }
-#panier{
+/*#panier{*/
     /*border:1px dashed black;*/
     /*margin:5px 15px;*/
     /*margin-left:2px;*/
-}
-#panier li{
+/*}*/
+/*#panier li{
 	list-style: none;
 	display: inline-block;
 margin-bottom: 10px;
-}
+}*/
 #panier img{
     float:right;
     clear: right;
 }
-
+aside table{
+    margin-left: 20px;
+    border-collapse: collapse;
+}
+aside table th, aside table td{
+    width: 50px;
+border: 1px solid #a5a5a5;
+}
+aside table th{
+    background-color: #e4e4e4;
+    text-align: left;
+}
+aside table td:last-of-type{
+    text-align: center;
+}
 #menu {
     text-align: center;
     width: 800px;
@@ -128,6 +163,8 @@ footer {
 #main{
     /*border: 1px solid black;*/
     width: 190px;
+    margin-top: 30px;
+
 }
 #main, .article{
     display: inline-block;
@@ -185,4 +222,14 @@ footer {
     font-weight: bold;
     color: red;
 }
-
+#div_paiement{
+    width: 600px;
+    /*border: 1px solid black;*/
+    margin-top: 50px;
+}
+#div_paiement, #main{
+    display: inline-block;
+}
+.paiement{
+    text-align: center;
+}

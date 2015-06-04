@@ -49,7 +49,7 @@ if ($password_same && $user_existe_pas) {
     write_txt($nouveaux_info_clients);
 
     echo "<h2>Inscript reussi !!!</h2>";
-echo '<a href="/P62_disque_C/P62_PHP_TP/index_tp.php">Retourner a page d\'accueil</a>';
+echo '<a href="index_tp.php">Retourner a page d\'accueil</a>';
 //var_dump($_SERVER);
 }
 ?>

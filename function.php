@@ -54,26 +54,28 @@ function afficher_article($cata, $tb_cata)
 function afficher_panier()
 {
     echo '<aside>';
-    echo '<h3>Panier</h3>';
-    echo '<ul id="panier">';
-    global $tb_cours_merged;
+    echo '<h3>Votre panier</h3>';
+    //echo '<ul id="panier">';
+    //  global $tb_cours_merged;
     /**
      *  Afficher cours choisis dans le panier
      */
-    if ((isset($_SESSION['user_id']) || isset($substitut_de_SESSION_id)) && array_key_exists('page', $_GET)) {   // Si est loged-in ( $_SESSION['user_id'] est declaré)
-        foreach ($tb_cours_merged as $name => $prix) {
-            echo "<li>$name $prix</li><a href='?action=remove&&name=$name&&page={$_GET['page']}'><img  src='images/button_x.png' alt='x'/></a>";
+    echo '<table>';
+    echo count($_SESSION['cours_choisi']) > 0 ? '<tr><th>Cours</th><th>Prix</th><th>Retirer</th></tr>' : '';
+    if ((isset($_SESSION['user_id']) || isset($substitut_de_SESSION_id)) && array_key_exists('page', $_GET)) {   // Si on est loged-in ( $_SESSION['user_id'] est declaré)
+        foreach (read_txt()[$_SESSION['user_id']]['cours_choisi'] as $name => $prix) {
+            echo "<tr><td>$name</td><td> $prix</td><td><a href='?action=remove&&name=$name&&page={$_GET['page']}'><img  src='images/button_x.png' alt='x'/></a></td></tr>";
         }
     } elseif (array_key_exists('page', $_GET)) {   // Si n'est pas loged-in mais il y a une requete de GET (Catalog spécifié)
         foreach ($_SESSION['cours_choisi'] as $name => $prix) {
-            echo "<li>$name $prix</li><a href='?action=remove&&name=$name&&page={$_GET['page']}'><img  src='images/button_x.png' alt='x'/></a>";
+            echo "<tr><td>$name</td><td> $prix</td><td><a href='?action=remove&&name=$name&&page={$_GET['page']}'><img  src='images/button_x.png' alt='x'/></a></td></tr>";
         }
     } else {   // Si n'est pas loged-in mais il y a une requete de GET ( Sans Catalog spécifié)
         foreach ($_SESSION['cours_choisi'] as $name => $prix) {
-            echo "<li>$name $prix</li><a href='?action=remove&&name=$name'><img  src='images/button_x.png' alt='x'/></a>";
+            echo "<tr><td>$name</td><td> $prix</td><td><a href='?action=remove&&name=$name'><img  src='images/button_x.png' alt='x'/></a></td></tr>";
         }
     }
-    echo '</ul>';
+    echo '</table>';
 
     /**
      *  Calculer prix total
@@ -83,8 +85,9 @@ function afficher_panier()
         $sum = $prix + $sum;
     }
 
-    echo '<h3>', 'Prix Total: ', $sum,' ', '</h3>';
-    echo '<input type="button" name="checkout" value="checkout" />';
+    echo '<h3><span class="red_bold">', count($_SESSION['cours_choisi']), ' ', '</span>cours choisis</h3>';
+    echo '<h3 >', 'Prix total: <span class="red_bold">', $sum, ' ', '</span>$</h3>';
+    echo '<form id="checkout" action="#" method="post"><input type="submit"  name="checkout" value="checkout" /></form>';
     echo '</aside>';
 }
 
@@ -120,10 +123,12 @@ function username_password_correct($username, $password)
 {
     $id = false;
     foreach (read_txt() as $index => $val) {
+        //var_dump($val['username']);
         if (($username == $val['username']) && ($val['password'] == $password)) {
+        //if (in_array($username, $val) && in_array($password, $val)){
             $id = $index;
-            break;
-        }
+        break;
+    }
     }
     return $id;
 }

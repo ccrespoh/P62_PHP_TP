@@ -56,14 +56,14 @@ function afficher_panier()
     echo '<aside>';
     echo '<h3>Votre panier</h3>';
     //echo '<ul id="panier">';
-    global $tb_cours_merged;
+    //  global $tb_cours_merged;
     /**
      *  Afficher cours choisis dans le panier
      */
     echo '<table>';
-    echo count($_SESSION['cours_choisi'])>0? '<tr><th>Cours</th><th>Prix</th><th>Retirer</th></tr>':'';
+    echo count($_SESSION['cours_choisi']) > 0 ? '<tr><th>Cours</th><th>Prix</th><th>Retirer</th></tr>' : '';
     if ((isset($_SESSION['user_id']) || isset($substitut_de_SESSION_id)) && array_key_exists('page', $_GET)) {   // Si on est loged-in ( $_SESSION['user_id'] est declaré)
-        foreach ($tb_cours_merged as $name => $prix) {
+        foreach (read_txt()[$_SESSION['user_id']]['cours_choisi'] as $name => $prix) {
             echo "<tr><td>$name</td><td> $prix</td><td><a href='?action=remove&&name=$name&&page={$_GET['page']}'><img  src='images/button_x.png' alt='x'/></a></td></tr>";
         }
     } elseif (array_key_exists('page', $_GET)) {   // Si n'est pas loged-in mais il y a une requete de GET (Catalog spécifié)
@@ -84,8 +84,8 @@ function afficher_panier()
     foreach ($_SESSION['cours_choisi'] as $name => $prix) {
         $sum = $prix + $sum;
     }
-  echo '<h3><span class="red_bold">',count($_SESSION['cours_choisi']),' ','</span>cours choisis</h3>';
-    echo '<h3 >', 'Prix total: <span class="red_bold">', $sum,' ','</span>$</h3>';
+    echo '<h3><span class="red_bold">', count($_SESSION['cours_choisi']), ' ', '</span>cours choisis</h3>';
+    echo '<h3 >', 'Prix total: <span class="red_bold">', $sum, ' ', '</span>$</h3>';
     echo '<form id="checkout" action="#" method="post"><input type="submit"  name="checkout" value="checkout" /></form>';
     echo '</aside>';
 }
@@ -122,10 +122,12 @@ function username_password_correct($username, $password)
 {
     $id = false;
     foreach (read_txt() as $index => $val) {
-        if (($username == $val['username']) && ($val['password'] == $password)) {
+        //var_dump($val['username']);
+        //if (($username == $val['username']) && ($val['password'] == $password)) {
+        if (in_array($username, $val) && in_array($password, $val)){
             $id = $index;
-            break;
-        }
+        break;
+    }
     }
     return $id;
 }

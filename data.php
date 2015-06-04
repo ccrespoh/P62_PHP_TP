@@ -47,7 +47,7 @@ $info_client = array(
 //write_txt($info_client);
 
 /*$d=read_txt();
-unset($d[6]);
+unset($d[7]);
 write_txt($d);
 var_dump(read_txt());*/
 

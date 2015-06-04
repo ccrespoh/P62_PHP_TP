@@ -106,7 +106,7 @@ margin-bottom: 10px;
     clear: right;
 }
 aside table{
-    margin-left: 20px;
+    /*margin-left: 20px;*/
     border-collapse: collapse;
 }
 aside table th, aside table td{
@@ -225,11 +225,12 @@ footer {
 #div_paiement{
     width: 600px;
     /*border: 1px solid black;*/
-    margin-top: 50px;
+   /* margin-top: 50px;*/
+    margin: 50px auto 0;
 }
-#div_paiement, #main{
+/*#div_paiement, #main{
     display: inline-block;
-}
+}*/
 .paiement{
     text-align: center;
 }

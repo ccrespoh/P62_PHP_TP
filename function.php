@@ -87,7 +87,7 @@ function afficher_panier()
 
     echo '<h3><span class="red_bold">', count($_SESSION['cours_choisi']), ' ', '</span>cours choisis</h3>';
     echo '<h3 >', 'Prix total: <span class="red_bold">', $sum, ' ', '</span>$</h3>';
-    echo '<form id="checkout" action="#" method="post"><input type="submit"  name="checkout" value="checkout" /></form>';
+    echo '<form id="checkout" action="checkout.php" method="post"><input type="submit"  name="checkout" value="checkout" /></form>';
     echo '</aside>';
 }
 

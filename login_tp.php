@@ -6,9 +6,9 @@
 function afficher_login()
 {
     echo '<form action = "#" method = "post" name="login_form">';
-    echo '<label for="name" > User name: </label >';
+    echo '<label for="name" > User name: </label ><br/>';
     echo '<input type = "text" id = "name" name = "name" /><br/>';
-    echo '<label for="pw" > Password: </label >';
+    echo '<label for="pw" > Password: </label ><br/>';
     echo '<input type = "password" id = "pw" name = "password" />';
     echo '<br/>';
     echo '<input type = "submit" value = "Se connecter" name="login_btn"/>';

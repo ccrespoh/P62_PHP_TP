@@ -14,6 +14,8 @@ echo '</div>';
 
 if (isset($_GET['page'])) {
     afficher_article($cata, demander_data($cata, $data));
+} elseif (array_key_exists('checkout', $_POST)) {
+    require_once 'checkout.php';
 } else {
     require_once 'homepage.php';
 }

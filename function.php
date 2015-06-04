@@ -83,7 +83,7 @@ function afficher_panier()
         $sum = $prix + $sum;
     }
 
-    echo '<h4>', 'Prix Total: ', $sum,' ', '</h4>';
+    echo '<h3>', 'Prix Total: ', $sum,' ', '</h3>';
     echo '<input type="button" name="checkout" value="checkout" />';
     echo '</aside>';
 }

@@ -11,7 +11,7 @@ $is_connected = (isset($_SESSION['user_id']) || isset($substitut_de_SESSION_id))
 <body>
 <div id="div_paiement">
     <?php
-    echo $is_connected? '<h1 class="paiement">Page de paiement</h1><h1 class="paiement">Construction en cours...</h1>':'<h1 class="paiement">Vous n\'avez pas connecté</h1>';
+    echo $is_connected? '<h1 class="paiement">Page de paiement</h1>':'<h1 class="paiement">Vous n\'avez pas connecté</h1>';
 
     ?>
 

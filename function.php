@@ -62,7 +62,7 @@ function afficher_panier()
      */
     echo '<table>';
     echo count($_SESSION['cours_choisi'])>0? '<tr><th>Cours</th><th>Prix</th><th>Retirer</th></tr>':'';
-    if ((isset($_SESSION['user_id']) || isset($substitut_de_SESSION_id)) && array_key_exists('page', $_GET)) {   // Si est loged-in ( $_SESSION['user_id'] est declaré)
+    if ((isset($_SESSION['user_id']) || isset($substitut_de_SESSION_id)) && array_key_exists('page', $_GET)) {   // Si on est loged-in ( $_SESSION['user_id'] est declaré)
         foreach ($tb_cours_merged as $name => $prix) {
             echo "<tr><td>$name</td><td> $prix</td><td><a href='?action=remove&&name=$name&&page={$_GET['page']}'><img  src='images/button_x.png' alt='x'/></a></td></tr>";
         }

@@ -1,6 +1,6 @@
 <?php
 /**
- * Si est loged-in, merge information:
+ * Si est loged-in, merge informations suivantes:
  * ( les cours choisi dans session avant loged-in) et ( les cours existent deja dans le base donnee de son compte)
  */
 
@@ -21,7 +21,7 @@ if (isset($_SESSION['user_id']) || isset($substitut_de_SESSION_id)) {   // Si es
 if (array_key_exists('action', $_GET) && ($_GET['action'] == 'add')) {
     if (isset($_SESSION['user_id']) || isset($substitut_de_SESSION_id)) {   // Si est loged-in ( Si $_SESSION['user_id'] est declaré)
         $tb_cours_merged[$_GET['name']] = $_GET['prix'];   //  Array $tb_cours_merged est deja rempli par les codes en haut
-        $_SESSION['cours_choisi'][$_GET['name']] = $_GET['prix'];     // Ajouter le cours dans $_SESSION
+        $_SESSION['cours_choisi']=$tb_cours_merged/*[$_GET['name']] = $_GET['prix']*/;     // Ajouter le cours dans $_SESSION
         $new_info_client[$_SESSION['user_id']]['cours_choisi'] = $tb_cours_merged;
         write_txt($new_info_client);  // En meme temps, ajouter le cours dans fichier txt
     } else {
@@ -34,7 +34,7 @@ if (array_key_exists('action', $_GET) && ($_GET['action'] == 'add')) {
 if (array_key_exists('action', $_GET) && ($_GET['action'] == 'remove')) {
     if (isset($_SESSION['user_id']) || isset($substitut_de_SESSION_id)) {    // Si est loged-in ( $_SESSION['user_id'] est declaré)
         unset($tb_cours_merged[$_GET['name']]);
-        $_SESSION['cours_choisi'] = $tb_cours_merged;  // Retirer le cours de $_SESSION
+        unset($_SESSION['cours_choisi'][$_GET['name']]) /*= $tb_cours_merged*/;  // Retirer le cours de $_SESSION
         $new_info_client[$_SESSION['user_id']]['cours_choisi'] = $tb_cours_merged;
         write_txt($new_info_client);   // En meme temps, retirer le cours du fichier txt
     } else {

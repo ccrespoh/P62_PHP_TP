@@ -12,6 +12,7 @@ for ($i = 1; $i <= 55; $i++) {
     );
 }*/
 //var_export($data);
+
 /*
 $info_client = array(
     1 => array(
@@ -41,7 +42,14 @@ $info_client = array(
             'linux' => 84,),
     ),
 );*/
+
+
 //write_txt($info_client);
+
+/*$d=read_txt();
+unset($d[6]);
+write_txt($d);
+var_dump(read_txt());*/
 
 $data = array(
     1 => array(
